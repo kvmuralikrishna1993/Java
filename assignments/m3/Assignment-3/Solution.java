@@ -25,31 +25,28 @@ final class Solution {
         Scanner scan = new Scanner(System.in);
         int a = scan.nextInt();
         int b = scan.nextInt();
-        int result = gcd(a,b);
+        int result = gcd(a, b);
         System.out.print(result);
      }
     /**
      * { function_description. }
      *
-     * @param      num   The number.
+     * @param      a     { parameter_description.}
+     * @param      b     { parameter_description.}
      *
-     * @return     { count.  }
+     * @return     { integer. }
      */
     public static int gcd(final int a, final int b) {
-    //Zero case
 
-    if (a == 0 || b == 0){
+    if (a == 0 || b == 0) {
        return 0;
-    }
-    // base case
-    else if (a == b){
+    } else if (a == b) {
         return a;
+    } else if (a > b) {
+        return gcd(a - b, b);
+    } else {
+        return gcd(a, b - a);
     }
-    // a is greater
-    else if (a > b){
-        return gcd(a-b, b);
-    }
-    else return gcd(a, b-a);
     }
     /**
     Need to fill the areaOfTriangle function and print the output
