@@ -22,22 +22,22 @@ final class Solution {
         /**
         main program starts here.
         */
-        Scanner sc=new Scanner(System.in);
-        String s=sc.nextLine();
-        String reverse=reverseString(s);    
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        String reverse = reverseString(s);
         System.out.println(reverse);
     }
     /**
-     * { function_description }
+     * { function_description }.
      *
-     * @param      s     { parameter_description }
+     * @param      str   The string
      *
      * @return     { description_of_the_return_value }
      */
-    public static String reverseString(String str) {
+    public static String reverseString(final String str) {
         String newstr = "";
-        for (int j = str.length()-1; j >= 0; j--) {
-                newstr += Character.toString(str.charAt(j));       
+        for (int j = str.length() - 1; j >= 0; j--) {
+            newstr += Character.toString(str.charAt(j));
         }
         return newstr;
     }
