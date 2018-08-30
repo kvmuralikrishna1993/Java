@@ -40,7 +40,7 @@ final class Solution {
 
         for (int i = 0; i < p; i++) {
             scan.nextLine();
-            for (int j = 0; j < q; j++ ) {
+            for (int j = 0; j < q; j++) {
                 b[i][j] = scan.nextInt();
             }
         }
@@ -65,7 +65,7 @@ final class Solution {
      * @param      a     { parameter_description }
      * @param      b     { parameter_description }
      */
-    public static void matrixadd(int[][] a, int[][] b) {
+    public static void matrixadd(final int[][] a, final int[][] b) {
         int[][] sum = new int[a.length][a[0].length];
 
         for (int i = 0; i < a.length; i++) {
