@@ -12,7 +12,7 @@ final class Solution {
     private Solution() {
     }
     /**
-     * { function_description }
+     * { function_description }.
      *
      * @param      args  The arguments
      */
@@ -32,10 +32,10 @@ final class Solution {
     @param len length
     @return int
     */
-    public static int sort(final int[] a,final int len) {
+    public static int sort(final int[] a, final int len) {
         int max = a[0];
         for (int i = 1; i < len; i++) {
-            if (max < a[i]){
+            if (max < a[i]) {
                 max = a[i];
             }
         }
