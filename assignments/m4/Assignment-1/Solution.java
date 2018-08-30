@@ -12,14 +12,15 @@ final class Solution {
     private Solution() {
     }
     /**
-    Do not modify this main function.
-    @param args None
-    */
+     * { function_description }
+     *
+     * @param      args  The arguments
+     */
     public static void main(final String[] args) {
-        Scanner sc = new Scanner(System.in); 
+        Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int[] array = new int [n];
-        for (int i = 0; i < n; i++){
+        int[] array = new int[n];
+        for (int i = 0; i < n; i++) {
             array[i] = sc.nextInt();
         }
         int result = sort(array, n);
@@ -27,13 +28,13 @@ final class Solution {
     }
     /**
     power function.
-    @param b base
-    @param e exponential
-    @return Long
+    @param a array
+    @param len length
+    @return int
     */
-    public static int sort(final int[] a, int len) {
+    public static int sort(final int[] a,final int len) {
         int max = a[0];
-        for (int i = 1; i < len; i++){
+        for (int i = 1; i < len; i++) {
             if (max < a[i]){
                 max = a[i];
             }
