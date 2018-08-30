@@ -22,11 +22,11 @@ final class Solution {
         /**
         main program starts here.
         */
-        Scanner sc=new Scanner(System.in);
-        int n= sc.nextInt();
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
         //System.out.println("Hi");
         sc.nextLine();
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             String s = sc.nextLine();
             //System.out.println(s);
             String res = binaryToDecimal(s);//Write binaryToDecimal function
@@ -34,13 +34,13 @@ final class Solution {
         }
      }
     /**
-     * { function_description }
+     * { function_description }.
      *
      * @param      binary  The binary
      *
      * @return     { description_of_the_return_value }
      */
-    public static String binaryToDecimal(String binary) {
+    public static String binaryToDecimal(final String binary) {
        int power = 0;
        double sum = 0;
        final int base = 2;
@@ -53,7 +53,7 @@ final class Solution {
                 power += 1;
         }
         //double result = sum;
-        return (Long.toString(Math.round(sum)));            
+        return (Long.toString(Math.round(sum)));
     }
     /**
     Need to fill the areaOfTriangle function and print the output
