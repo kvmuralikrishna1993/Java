@@ -28,11 +28,11 @@ final class Solution {
         System.out.println(reverse);
     }
     /**
-     * { function_description }.
+     * { reverse string }.
      *
      * @param      str   The string
      *
-     * @return     { description_of_the_return_value }
+     * @return     { string }
      */
     public static String reverseString(final String str) {
         String newstr = "";
@@ -41,8 +41,4 @@ final class Solution {
         }
         return newstr;
     }
-    /**
-    Need to fill the areaOfTriangle function and print the output
-    of fahrenheit.
-    */
 }
