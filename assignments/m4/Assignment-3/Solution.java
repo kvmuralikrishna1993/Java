@@ -34,11 +34,11 @@ final class Solution {
         }
      }
     /**
-     * { function_description }.
+     * { binary to decimal function }.
      *
      * @param      binary  The binary
      *
-     * @return     { description_of_the_return_value }
+     * @return     { string }
      */
     public static String binaryToDecimal(final String binary) {
        int power = 0;
@@ -55,8 +55,4 @@ final class Solution {
         //double result = sum;
         return (Long.toString(Math.round(sum)));
     }
-    /**
-    Need to fill the areaOfTriangle function and print the output
-    of fahrenheit.
-    */
 }
