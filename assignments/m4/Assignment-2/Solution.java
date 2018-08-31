@@ -56,10 +56,10 @@ final class Solution {
 
     }
     /**
-     * { function_description }.
+     * { matrix addition }.
      *
-     * @param      a     { parameter_description }
-     * @param      b     { parameter_description }
+     * @param      a     { array 1 }
+     * @param      b     { array 2 }
      */
     public static void matrixadd(final int[][] a, final int[][] b) {
         int[][] sum = new int[a.length][a[0].length];
@@ -79,8 +79,4 @@ final class Solution {
         }
 
     }
-    /**
-    Need to fill the areaOfTriangle function and print the output
-    of fahrenheit.
-    */
 }
