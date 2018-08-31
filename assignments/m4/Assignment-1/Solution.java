@@ -12,7 +12,7 @@ final class Solution {
     private Solution() {
     }
     /**
-     * { function_description }.
+     * { main function}.
      *
      * @param      args  The arguments
      */
@@ -27,7 +27,7 @@ final class Solution {
         System.out.println(result);
     }
     /**
-    power function.
+    sort function.
     @param a array
     @param len length
     @return int
@@ -41,7 +41,4 @@ final class Solution {
         }
         return max;
     }
-    /**
-    Need to write the power function and print the output.
-    */
 }
