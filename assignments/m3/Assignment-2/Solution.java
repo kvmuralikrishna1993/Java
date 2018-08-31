@@ -28,7 +28,7 @@ final class Solution {
         System.out.print(result);
      }
     /**
-     * { count. }
+     * { count function. }
      *
      * @param      num  The number.
      *
