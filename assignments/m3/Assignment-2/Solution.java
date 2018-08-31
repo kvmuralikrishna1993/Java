@@ -28,11 +28,11 @@ final class Solution {
         System.out.print(result);
      }
     /**
-     * { function_description. }
+     * { count. }
      *
-     * @param      num   The number.
+     * @param      num  The number.
      *
-     * @return     { count.  }
+     * @return     { int (count.  }
      */
     public static int count(final int num) {
         char c = '7';
@@ -48,8 +48,4 @@ final class Solution {
         }
         return charcount;
     }
-    /**
-    Need to fill the areaOfTriangle function and print the output
-    of fahrenheit.
-    */
 }
