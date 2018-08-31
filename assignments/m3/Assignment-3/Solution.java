@@ -29,10 +29,10 @@ final class Solution {
         System.out.print(result);
      }
     /**
-     * { function_description. }
+     * { gcd function. }
      *
-     * @param      a     { parameter_description.}
-     * @param      b     { parameter_description.}
+     * @param      a     { first number}
+     * @param      b     { second number.}
      *
      * @return     { integer. }
      */
@@ -46,10 +46,6 @@ final class Solution {
         return gcd(a - b, b);
     } else {
         return gcd(a, b - a);
+      }
     }
-    }
-    /**
-    Need to fill the areaOfTriangle function and print the output
-    of fahrenheit.
-    */
 }
