@@ -30,7 +30,7 @@ public class List {
      *
     */
     /**
-     * { inner array.}
+     * { inner array.}.
      */
     private int[] arr;
     // declare a private int[]
@@ -70,7 +70,7 @@ public class List {
     /**
      * { intial array value }.
      */
-    final int val = 10;
+    private final int val = 10;
     /**
      * Constructs the object.
      */
@@ -100,20 +100,19 @@ public class List {
      * The method returns void (nothing)
      */
     /**
-     * { add elements to list.}
+     * { add elements to list.}.
      *
      * @param      item  adding element.
      */
-    public void add( final int item) {
+    public void add(final int item) {
         //Inserts the specified element at the end of the list.
         arr[sz] = item;
-        sz += 1; 
+        sz += 1;
     }
     /*
      * The size method returns the value of the size.
      * The purpose of the method is to announce the size of the list
      * to the objects outside the list
-     * 
      * The method returns an int. Empty list should return 0.
      */
     /**
@@ -150,7 +149,7 @@ public class List {
      *
      * @param      index  index of list.
      */
-    public void remove(int index) {
+    public void remove(final int index) {
         // write the logic for remove here.
         // Think about what to do to the size variable.
         if (index >= 0 && index < sz) {
@@ -181,18 +180,15 @@ public class List {
      *
      * @return     { index.}
      */
-    public int get(int index) {
+    public int get(final int index) {
         // Replace the code below to write the code for get
         //int flag = 0;
         if (index < sz && index > -1) {
             return arr[index];
-        }
-        else {
+        } else {
             return -1;
-        }
-            //return -1;
+        } //return -1;
     }
-
     /*
      * What happens when you print an object using println?
      * Java provides a method named toString that is internally
@@ -294,7 +290,7 @@ public class List {
         //System.out.println(sz);
     }
     /**
-     * { add element at index.}
+     * { add element at index.}.
      *
      * @param      item  The item.
      */
@@ -304,18 +300,17 @@ public class List {
         int index = Integer.parseInt(tokens[0]);
         int element = Integer.parseInt(tokens[1]);
         if (index >= 0 && index < sz) {
-            for (int i = sz -1; i > index; i--) {
-            arr[sz] = arr[sz-1];
+            for (int i = sz - 1; i > index; i--) {
+            arr[sz] = arr[sz - 1];
             }
             arr[index] = element;
             sz++;
-        }
-        else {
+        } else {
             System.out.println("Invalid Position Exception");
         }
     }
     /**
-     * { count of element.}
+     * { count of element.}.
      *
      * @param      item  The item. 
      */
@@ -330,7 +325,7 @@ public class List {
         return cou;
     }
     /**
-     * { main function }
+     * { main function}.
      *
      * @param      args  The arguments
      */
@@ -385,7 +380,7 @@ public class List {
                 case "count":
                 System.out.println(l.count(Integer.parseInt(tokens[1])));
                 break;
-
+                default:
             }
         }
     }
