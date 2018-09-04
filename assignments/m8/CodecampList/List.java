@@ -296,11 +296,13 @@ public class List {
     public void addindex(final String item) {
         //Inserts the specified element at the end of the list.
         String[] tokens = item.split(",");
+
         int index = Integer.parseInt(tokens[0]);
         int element = Integer.parseInt(tokens[1]);
+
         if (index >= 0 && index < sz) {
-            for (int i = sz - 1; i > index; i--) {
-            arr[sz] = arr[sz - 1];
+            for (int i = sz; i > index; i--) {
+            arr[i] = arr[i - 1];
             }
             arr[index] = element;
             sz++;
