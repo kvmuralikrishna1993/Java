@@ -127,9 +127,10 @@ public class List {
         // write the logic for remove here.
         // Think about what to do to the size variable.
         if (index >= 0 && index < sz) {
-            for (int i = index; i < sz; i++) {
+            for (int i = index; i < sz-1; i++) {
             arr[i] = arr[i+1];
             }
+            //arr[sz-1]=0;
             sz -= 1;
         }
         else {
@@ -229,7 +230,62 @@ public class List {
         // Replace the code below
         return -1;
     }
-
+    /**
+     * Adds all.
+     *
+     * @param      item  The item
+     */
+    public void addAll(String item) {
+        //Inserts the specified element at the end of the list.
+        String[] tokens = item.split(",");
+        //int[] b = new int[tokens.length]
+        for (int i = 0; i < tokens.length; i++) {
+            add(Integer.parseInt(tokens[i]));
+        }
+        //sz += tokens.length;
+        //System.out.println(sz);
+    }
+    /**
+     * { function_description }
+     *
+     * @param      item  The item
+     */
+    public void addindex(String item) {
+        //Inserts the specified element at the end of the list.
+        String[] tokens = item.split(",");
+        int index = Integer.parseInt(tokens[0]);
+        int element = Integer.parseInt(tokens[1]);
+        if (index >= 0 && index < sz) {
+            for (int i = sz -1; i > index; i--) {
+            arr[sz] = arr[sz-1];
+            }
+            arr[index] = element;
+            sz++;
+        }
+        else {
+            System.out.println("Invalid Position Exception");
+        }
+    }
+    /**
+     * { function_description }
+     *
+     * @param      item  The item
+     */
+    public int count(int item) {
+        //Inserts the specified element at the end of the list.
+        int cou = 0;
+        for (int i = 0; i < sz; i++) {
+            if (arr[i] == item) {
+                cou++;
+            }
+        }
+        return cou;
+    }
+    /**
+     * { function_description }
+     *
+     * @param      args  The arguments
+     */
     public static void main(String[] args) {
         // create an object of the list to invoke methods on it
         List l = new List();
@@ -271,6 +327,17 @@ public class List {
                 case "contains":
                 System.out.println(l.contains(Integer.parseInt(tokens[1])));
                 break;
+                case "addAll":
+                //System.out.println(tokens[1]);
+                l.addAll(tokens[1]);
+                break;
+                case "addindex":
+                l.addindex(tokens[1]);
+                break;
+                case "count":
+                System.out.println(l.count(Integer.parseInt(tokens[1])));
+                break;
+
             }
         }
     }
