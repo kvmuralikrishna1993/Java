@@ -70,7 +70,7 @@ public class List {
     /**
      * { intial array value }.
      */
-    private int val = 10;
+    final int val = 10;
     /**
      * Constructs the object.
      */
@@ -97,7 +97,6 @@ public class List {
      * Is it the same as the end of the array?
      * Think about how you can use the size variable to add item
      * to the list.
-     * 
      * The method returns void (nothing)
      */
     /**
@@ -105,12 +104,11 @@ public class List {
      *
      * @param      item  adding element.
      */
-    public void add(int item) {
+    public void add( final int item) {
         //Inserts the specified element at the end of the list.
         arr[sz] = item;
         sz += 1; 
     }
-
     /*
      * The size method returns the value of the size.
      * The purpose of the method is to announce the size of the list
@@ -119,15 +117,14 @@ public class List {
      * The method returns an int. Empty list should return 0.
      */
     /**
-     * { returns size of list.}
+     * { returns size of list.}.
      *
-     * @return     {size of list.}
+     * @return     {size of list.}.
      */
     public int size() {
         // replace the code below to implement the size method
         return sz;
     }
-
     /*
      * The remove method does what the name suggests.
      * Removes an int item, specified by the index argument, from the list
@@ -149,7 +146,7 @@ public class List {
      * The method returns void (nothing)
      */
     /**
-     * { removes the value from list.}
+     * { removes the value from list.}.
      *
      * @param      index  index of list.
      */
@@ -157,17 +154,15 @@ public class List {
         // write the logic for remove here.
         // Think about what to do to the size variable.
         if (index >= 0 && index < sz) {
-            for (int i = index; i < sz-1; i++) {
-            arr[i] = arr[i+1];
+            for (int i = index; i < sz - 1; i++) {
+            arr[i] = arr[i + 1];
             }
             //arr[sz-1]=0;
             sz -= 1;
-        }
-        else {
+        } else {
             System.out.println("Invalid Position Exception");
         }
     }
-
     /*
      * Get method has to return the items that is
      * at the index position passed as an argument to the method.
@@ -180,9 +175,9 @@ public class List {
      * number of items in the list? Would size variable be useful?
      */
     /**
-     * { returns the index of list}
+     * { returns the index of list}.
      *
-     * @param      index  The index
+     * @param      index  The index.
      *
      * @return     { index.}
      */
@@ -219,7 +214,7 @@ public class List {
      *
      */
     /**
-     * {print display}
+     * {print display}.
      *
      * @return     String of list.
      */
@@ -228,15 +223,14 @@ public class List {
         String str = "[";
         String cmm = ",";
         for (int i = 0; i < sz; i++) {
-            if (i == sz -1) {
+            if (i == sz - 1) {
                 cmm = "";
             }
             str = str + Integer.toString(arr[i]) + cmm;
         }
         str = str + ']';
         return str;
-    } 
-    
+    }
     /*
      * Contains return true if the list has
      * the item passed as an argument to the method
@@ -261,7 +255,6 @@ public class List {
         // Replace the code below
         return flag == 1;
     }
-
     /*
      * Returns the index of the first occurrence 
      * of the specified element in this list,
