@@ -1,6 +1,11 @@
+/**
+ * { importing. }
+ */
 import java.io.BufferedInputStream;
 import java.util.Scanner;
-
+/**
+ * class List. 
+ */
 public class List {
     //Implement all the methods mentioned to build a ListADT
 
@@ -24,7 +29,9 @@ public class List {
      * This is a hard concept to understand. Discuss with your mentor.
      *
     */
-
+    /**
+     * { inner array }
+     */
     private int[] arr;
     // declare a private int[]
     // don't create the array yet using new
@@ -49,6 +56,9 @@ public class List {
      * to be accessed by the methods that are outside of the List class.
      * 
      */
+    /**
+     * { size of array.}
+     */
     private int sz;
     // declare a private int size
     // again, don't initialize it here
@@ -57,6 +67,9 @@ public class List {
     /*
      * The purpose of the constructor is to initialize the
      * class variables with some default values.
+     */
+    /**
+     * Constructs the List object.
      */
     public List() {
 
@@ -85,6 +98,11 @@ public class List {
      * 
      * The method returns void (nothing)
      */
+    /**
+     * { add elements to list.}
+     *
+     * @param      item  adding element.
+     */
     public void add(int item) {
         //Inserts the specified element at the end of the list.
         arr[sz] = item;
@@ -97,6 +115,11 @@ public class List {
      * to the objects outside the list
      * 
      * The method returns an int. Empty list should return 0.
+     */
+    /**
+     * { returns size of list.}
+     *
+     * @return     {size of list.}
      */
     public int size() {
         // replace the code below to implement the size method
@@ -123,6 +146,11 @@ public class List {
      * array = [1,3,0,0,0,0,0,0,0,0]
      * The method returns void (nothing)
      */
+    /**
+     * { removes the value from list.}
+     *
+     * @param      index  index of list.
+     */
     public void remove(int index) {
         // write the logic for remove here.
         // Think about what to do to the size variable.
@@ -148,6 +176,13 @@ public class List {
      * in the list then that would mean the item doesn't exist.
      * How do we check if the position is greater than the 
      * number of items in the list? Would size variable be useful?
+     */
+    /**
+     * { returns the index of list}
+     *
+     * @param      index  The index
+     *
+     * @return     { index.}
      */
     public int get(int index) {
         // Replace the code below to write the code for get
@@ -181,11 +216,16 @@ public class List {
      * not all the elements of the array.
      *
      */
+    /**
+     * {print display}
+     *
+     * @return     String of list.
+     */
     public String toString() {
         // Replace the code below
         String str = "[";
         String cmm = ",";
-        for (int i = 0; i < sz; i++){
+        for (int i = 0; i < sz; i++) {
             if (i == sz -1) {
                 cmm = "";
             }
@@ -200,6 +240,13 @@ public class List {
      * the item passed as an argument to the method
      * So, iterate through the list and return true if
      * the item exists and otherwise false
+     */
+    /**
+     * { checks the element in list.}
+     *
+     * @param      item  The item
+     *
+     * @return     { true or false.}
      */
     public boolean contains(int item) {
         int flag = 0;
@@ -218,6 +265,13 @@ public class List {
      * of the specified element in this list,
      * or -1 if this list does not contain the element.
      */
+    /**
+     * Searches for the first match.
+     *
+     * @param      item  element
+     *
+     * @return     { index.}
+     */
     public int indexOf(int item) {
         int flag = 0;
         for (int i = 0; i < sz; i++) {
@@ -225,13 +279,12 @@ public class List {
                 flag = 1;
                 return i;
             }
-
         }
         // Replace the code below
         return -1;
     }
     /**
-     * Adds all.
+     * Adds all elements given.
      *
      * @param      item  The item
      */
@@ -246,9 +299,9 @@ public class List {
         //System.out.println(sz);
     }
     /**
-     * { function_description }
+     * { add element at index.}
      *
-     * @param      item  The item
+     * @param      item  The item.
      */
     public void addindex(String item) {
         //Inserts the specified element at the end of the list.
@@ -267,9 +320,9 @@ public class List {
         }
     }
     /**
-     * { function_description }
+     * { count of element.}
      *
-     * @param      item  The item
+     * @param      item  The item. 
      */
     public int count(int item) {
         //Inserts the specified element at the end of the list.
@@ -282,7 +335,7 @@ public class List {
         return cou;
     }
     /**
-     * { function_description }
+     * { main function }
      *
      * @param      args  The arguments
      */
