@@ -4,7 +4,7 @@
 import java.io.BufferedInputStream;
 import java.util.Scanner;
 /**
- * class List. 
+ * class List.
  */
 public class List {
     //Implement all the methods mentioned to build a ListADT
@@ -30,7 +30,7 @@ public class List {
      *
     */
     /**
-     * { inner array }
+     * { inner array.}
      */
     private int[] arr;
     // declare a private int[]
@@ -54,10 +54,9 @@ public class List {
      * So, to keep track of the size we need a variable called size
      * Again, we use private as we don't want that size variable
      * to be accessed by the methods that are outside of the List class.
-     * 
      */
     /**
-     * { size of array.}
+     * { size of array.}.
      */
     private int sz;
     // declare a private int size
@@ -69,7 +68,11 @@ public class List {
      * class variables with some default values.
      */
     /**
-     * Constructs the List object.
+     * { intial array value }.
+     */
+    private int val = 10;
+    /**
+     * Constructs the object.
      */
     public List() {
 
@@ -82,11 +85,10 @@ public class List {
         // Think about the initial value for size.
         // How many items do we have in the list when you create it?
         // An empty list has how many items?
-        // That is the initial value to use for size.
-        arr = new int [10];
+        // That is the initial value to use for size.\
+        arr = new int[val];
         sz = 0;
     }
-    
     /*
      * The add method does what the name suggests.
      * Add an int item to the list.
