@@ -251,7 +251,7 @@ public class List {
         return flag == 1;
     }
     /*
-     * Returns the index of the first occurrence 
+     * Returns the index of the first occurrence
      * of the specified element in this list,
      * or -1 if this list does not contain the element.
      */
@@ -309,9 +309,11 @@ public class List {
         }
     }
     /**
-     * { count of element.}.
+     * { count of element }.
      *
-     * @param      item  The item. 
+     * @param      item  element
+     *
+     * @return     { count of element}
      */
     public int count(final int item) {
         //Inserts the specified element at the end of the list.
