@@ -105,10 +105,10 @@ public class List {
      *
      * @return     { array }
      */
-    public int[] resize(final int[] arr) {
-        int[] temp = new int[(arr.length * 2)];
-        for (int i = 0; i < arr.length; i++) {
-            temp[i] = arr[i];
+    public int[] resize(final int[] args) {
+        int[] temp = new int[(args.length * 2)];
+        for (int i = 0; i < args.length; i++) {
+            temp[i] = args[i];
         }
         return temp;
     }
