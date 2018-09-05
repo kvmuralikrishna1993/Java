@@ -99,21 +99,21 @@ public class List {
      */
     }
     /**
-     * { Dynamic array }
+     * { Dynamic array }.
      *
      * @param      arr   The arr
      *
      * @return     { array }
      */
-    public int[] DynamicArray(int[] arr) {
+    public int[] resize(final int[] arr) {
         int[] temp = new int[(arr.length * 2)];
         for (int i = 0; i < arr.length; i++) {
-            temp[i] = arr[i];     
+            temp[i] = arr[i];   
         }
         return temp;
     }
     /**
-     * { list add function }
+     * { list add function }.
      *
      * @param      item  elements
      */
@@ -123,7 +123,7 @@ public class List {
             arr[sz] = item;
             sz += 1;
         } else {
-            arr = DynamicArray(arr);
+            arr = resize(arr);
             arr[sz] = item;
             sz += 1;
         }
@@ -335,7 +335,14 @@ public class List {
         }
         return cou;
     }
-    public static int[] convert(String str) {
+    /**
+     * { converting string to array }
+     *
+     * @param      str   The string
+     *
+     * @return     { int array }
+     */
+    public static int[] convert(final String str) {
         String[] tokens = str.split(",");
         int[] temp = new int[tokens.length];
         for (int i = 0; i < tokens.length; i++) {
