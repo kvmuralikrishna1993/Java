@@ -77,7 +77,6 @@ public class List {
     public List() {
         arr = new int[val];
         sz = 0;
-
     // what are the two variables to be initialized here?
     // think about the private variables described above.
     // What should be the default values?
@@ -105,12 +104,13 @@ public class List {
      *
      * @return     { array }
      */
-    public int[] DynamicArray(int[] arr) {
+    private void DynamicArray(int[] arr) {
         int[] temp = new int[(arr.length * 2)];
-        for (int i = 0; i < arr.length; i++) {
-            temp[i] = arr[i];     
-        }
-        return temp;
+        System.arraycopy(arr, 0, temp, 0, sz);
+        //for (int i = 0; i < arr.length; i++) {
+        //    temp[i] = arr[i];     
+        //}
+        arr = temp;
     }
     /**
      * { list add function }
@@ -118,12 +118,11 @@ public class List {
      * @param      item  elements
      */
     public void add(final int item) {
-        //Inserts the specified element at the end of the list.
         if (sz < arr.length) {
             arr[sz] = item;
             sz += 1;
         } else {
-            arr = DynamicArray(arr);
+            DynamicArray(arr);
             arr[sz] = item;
             sz += 1;
         }
@@ -140,7 +139,6 @@ public class List {
      * @return     {size of list.}.
      */
     public int size() {
-        // replace the code below to implement the size method
         return sz;
     }
     /*
@@ -169,13 +167,10 @@ public class List {
      * @param      index  index of list.
      */
     public void remove(final int index) {
-        // write the logic for remove here.
-        // Think about what to do to the size variable.
         if (index >= 0 && index < sz) {
             for (int i = index; i < sz - 1; i++) {
             arr[i] = arr[i + 1];
             }
-            //arr[sz-1]=0;
             sz -= 1;
         } else {
             System.out.println("Invalid Position Exception");
@@ -200,13 +195,11 @@ public class List {
      * @return     { index.}
      */
     public int get(final int index) {
-        // Replace the code below to write the code for get
-        //int flag = 0;
         if (index < sz && index > -1) {
             return arr[index];
         } else {
             return -1;
-        } //return -1;
+        }
     }
     /*
      * What happens when you print an object using println?
@@ -233,7 +226,6 @@ public class List {
      * @return     String of list.
      */
     public String toString() {
-        // Replace the code below
         String str = "[";
         String cmm = ",";
         for (int i = 0; i < sz; i++) {
@@ -266,7 +258,6 @@ public class List {
                 break;
             }
         }
-        // Replace the code below
         return flag == 1;
     }
     /*
@@ -289,7 +280,6 @@ public class List {
                 return i;
             }
         }
-        // Replace the code below
         return -1;
     }
     /**
@@ -298,14 +288,10 @@ public class List {
      * @param      item  The item
      */
     public void addAll(final String item) {
-        //Inserts the specified element at the end of the list.
         String[] tokens = item.split(",");
-        //int[] b = new int[tokens.length]
         for (int i = 0; i < tokens.length; i++) {
             add(Integer.parseInt(tokens[i]));
         }
-        //sz += tokens.length;
-        //System.out.println(sz);
     }
     /**
      * { add element at index.}.
@@ -313,12 +299,9 @@ public class List {
      * @param      item  The item.
      */
     public void addindex(final String item) {
-        //Inserts the specified element at the end of the list.
         String[] tokens = item.split(",");
-
         int index = Integer.parseInt(tokens[0]);
         int element = Integer.parseInt(tokens[1]);
-
         if (index >= 0 && index < sz) {
             for (int i = sz; i > index; i--) {
             arr[i] = arr[i - 1];
@@ -337,7 +320,6 @@ public class List {
      * @return     { count of element}
      */
     public int count(final int item) {
-        //Inserts the specified element at the end of the list.
         int cou = 0;
         for (int i = 0; i < sz; i++) {
             if (arr[i] == item) {
@@ -393,7 +375,6 @@ public class List {
                 System.out.println(l.contains(Integer.parseInt(tokens[1])));
                 break;
                 case "addAll":
-                //System.out.println(tokens[1]);
                 l.addAll(tokens[1]);
                 break;
                 case "addindex":
