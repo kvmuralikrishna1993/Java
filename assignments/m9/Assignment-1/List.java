@@ -107,9 +107,6 @@ public class List {
     private int[] DynamicArray(int[] arr) {
         int[] temp = new int[(arr.length * 2)];
         System.arraycopy(arr, 0, temp, 0, sz);
-        //for (int i = 0; i < arr.length; i++) {
-        //    temp[i] = arr[i];     
-        //}
         return temp;
     }
     /**
