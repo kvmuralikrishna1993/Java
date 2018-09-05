@@ -101,7 +101,7 @@ public class List {
     /**
      * { Dynamic array }.
      *
-     * @param      arr   The arr
+     * @param      args   The array
      *
      * @return     { array }
      */
