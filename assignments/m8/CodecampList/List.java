@@ -75,20 +75,18 @@ public class List {
      * Constructs the object.
      */
     public List() {
-
-        // what are the two variables to be initialized here?
-        // think about the private variables described above.
-        // What should be the default values?
-        // In the case of the list, it should be empty but
-        // it should be initialized with an array size like 10
-
-        // Think about the initial value for size.
-        // How many items do we have in the list when you create it?
-        // An empty list has how many items?
-        // That is the initial value to use for size.\
         arr = new int[val];
         sz = 0;
-    }
+
+    // what are the two variables to be initialized here?
+    // think about the private variables described above.
+    // What should be the default values?
+    // In the case of the list, it should be empty but
+    // it should be initialized with an array size like 10
+    // Think about the initial value for size.
+    // How many items do we have in the list when you create it?
+    // An empty list has how many items?
+    // That is the initial value to use for size.
     /*
      * The add method does what the name suggests.
      * Add an int item to the list.
@@ -99,15 +97,36 @@ public class List {
      * to the list.
      * The method returns void (nothing)
      */
+    }
     /**
-     * { add elements to list.}.
+     * { Dynamic array }
      *
-     * @param      item  adding element.
+     * @param      arr   The arr
+     *
+     * @return     { array }
+     */
+    public int[] DynamicArray(int[] arr) {
+        int[] temp = new int[(arr.length * 2)];
+        for (int i = 0; i < arr.length; i++) {
+            temp[i] = arr[i];     
+        }
+        return temp;
+    }
+    /**
+     * { list add function }
+     *
+     * @param      item  elements
      */
     public void add(final int item) {
         //Inserts the specified element at the end of the list.
-        arr[sz] = item;
-        sz += 1;
+        if (sz < arr.length) {
+            arr[sz] = item;
+            sz += 1;
+        } else {
+            arr = DynamicArray(arr);
+            arr[sz] = item;
+            sz += 1;
+        }
     }
     /*
      * The size method returns the value of the size.
@@ -278,33 +297,22 @@ public class List {
      *
      * @param      item  The item
      */
-    public void addAll(final String item) {
-        //Inserts the specified element at the end of the list.
-        String[] tokens = item.split(",");
-        //int[] b = new int[tokens.length]
-        for (int i = 0; i < tokens.length; i++) {
-            add(Integer.parseInt(tokens[i]));
+    public void addAll(final int[] item) {
+        for (int i = 0; i < item.length; i++) {
+            add(item[i]);
         }
-        //sz += tokens.length;
-        //System.out.println(sz);
     }
     /**
      * { add element at index.}.
      *
      * @param      item  The item.
      */
-    public void addindex(final String item) {
-        //Inserts the specified element at the end of the list.
-        String[] tokens = item.split(",");
-
-        int index = Integer.parseInt(tokens[0]);
-        int element = Integer.parseInt(tokens[1]);
-
-        if (index >= 0 && index < sz) {
-            for (int i = sz; i > index; i--) {
+    public void addindex(final int[] item) {
+        if (item[0] >= 0 && item[0] < sz) {
+            for (int i = sz; i > item[0]; i--) {
             arr[i] = arr[i - 1];
             }
-            arr[index] = element;
+            arr[item[0]] = item[1];
             sz++;
         } else {
             System.out.println("Invalid Position Exception");
@@ -326,6 +334,14 @@ public class List {
             }
         }
         return cou;
+    }
+    public static int[] convert(String str) {
+        String[] tokens = str.split(",");
+        int[] temp = new int[tokens.length];
+        for (int i = 0; i < tokens.length; i++) {
+        temp[i] = Integer.parseInt(tokens[i]);
+        }
+        return temp;
     }
     /**
      * { main function}.
@@ -375,10 +391,10 @@ public class List {
                 break;
                 case "addAll":
                 //System.out.println(tokens[1]);
-                l.addAll(tokens[1]);
+                l.addAll(convert(tokens[1]));
                 break;
                 case "addindex":
-                l.addindex(tokens[1]);
+                l.addindex(convert(tokens[1]));
                 break;
                 case "count":
                 System.out.println(l.count(Integer.parseInt(tokens[1])));
