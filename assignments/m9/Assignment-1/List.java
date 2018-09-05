@@ -104,13 +104,13 @@ public class List {
      *
      * @return     { array }
      */
-    private void DynamicArray(int[] arr) {
+    private int[] DynamicArray(int[] arr) {
         int[] temp = new int[(arr.length * 2)];
         System.arraycopy(arr, 0, temp, 0, sz);
         //for (int i = 0; i < arr.length; i++) {
         //    temp[i] = arr[i];     
         //}
-        arr = temp;
+        return temp;
     }
     /**
      * { list add function }
@@ -122,7 +122,7 @@ public class List {
             arr[sz] = item;
             sz += 1;
         } else {
-            DynamicArray(arr);
+            arr = DynamicArray(arr);
             arr[sz] = item;
             sz += 1;
         }
