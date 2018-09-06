@@ -303,7 +303,7 @@ public class List {
         }
     }
     /**
-     * { function_description }
+     * { adding at index}.
      *
      * @param      item1  The item 1
      * @param      item2  The item 2
@@ -377,10 +377,9 @@ public class List {
                 String[] t = tokens[1].split(",");
                 if (t.length == 1) {
                     l.add(Integer.parseInt(tokens[1]));
-                }
-                else{
-                    if(t.length > 1)
-                        l.add(Integer.parseInt(t[0]),Integer.parseInt(t[1]));
+                } else {
+                    if (t.length > 1)
+                        l.add(Integer.parseInt(t[0]), Integer.parseInt(t[1]));
                     }
                 }
                 break;
