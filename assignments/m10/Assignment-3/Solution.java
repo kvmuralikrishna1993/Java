@@ -45,6 +45,15 @@ final class Student {
         return this.getName().equals(that.getName());
     }
 /**
+ * { hashcode function }.
+ *
+ * @return     { description_of_the_return_value }
+ */
+@Override
+public int hashCode() {
+    return 0;    
+}
+/**
  * Returns a string representation of the object.
  *
  * @return     String representation of the object.
