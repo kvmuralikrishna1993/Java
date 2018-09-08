@@ -108,7 +108,7 @@ class Set {
     public Set intersection(final Set args) {
     	Set inter = new Set();
         int[] array = new int[args.set.length];
-        Arrays. sort(args.set, 0, array.length);
+        Arrays.sort(args.set, 0, array.length);
     	for ( int i = 0; i < array.length; i++) {
     		if (contains(array[i])) {
     			inter.add(array[i]);
