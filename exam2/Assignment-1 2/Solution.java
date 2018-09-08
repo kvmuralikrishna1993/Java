@@ -113,7 +113,7 @@ class Set {
             for(int j = 0; j < args.set.length; j++) {
                 //System.out.println(set[i]+" "+args.set[j]);
                 if (set[i] == args.set[j]) {
-                    inter.add(args.set[j]);
+                    inter.add(set[i]);
                 }
             }
     	} return inter; 
@@ -143,9 +143,11 @@ class Set {
      */
     public Set retainAll(final int[] args) {
     	Set retain = new Set();
-       	for (int i = 0; i < args.length; i++) {
-            if (contains(args[i])) {
-                retain.add(args[i]);
+       	for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (set[i] == args[j]) {
+                    retain.add(set[i]);
+                }
             }
         }
        	return retain;
