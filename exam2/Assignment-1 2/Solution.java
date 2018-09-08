@@ -162,6 +162,9 @@ class Set {
     	final int len1 = args.set.length;
     	final int len2 = set.length;
     	Set cartesianProduct = new Set();
+        if (len1 == 0 || len2 == 0) {
+            return cartesianProduct.set;
+        }
     	//int[] mini = new int[2];
     	//int[][] cartesian = new int[(len1*len2)][2];
         int[] mini = new int[2];
