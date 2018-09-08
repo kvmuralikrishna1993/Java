@@ -78,7 +78,7 @@ class Set {
     public String toString() {
         // Replace the code below
         String str = "{";
-        String cmm = ",";
+        String cmm = ", ";
         for (int i = 0; i < size; i++) {
             if (i == size - 1) {
                 cmm = "";
