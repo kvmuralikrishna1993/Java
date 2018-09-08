@@ -161,24 +161,22 @@ class Set {
      * @return     { description_of_the_return_value }
      */ 
 	public Object[] cartesianProduct(final Set args) {
-    	final int len1 = args.set.length;
-    	final int len2 = set.length;
-    	Object[] cartesianProduct = new Object[len1*len2];
-        Set minir = new Set();
+    	final int len1 = size;
+    	final int len2 = args.size();
+    	Object[] cartesianProduct = new Object[size*len2];
         //Set min = new Set();
-        int[] mini = new int[2];
+        //int[] mini = new int[2];
         int k = 0;
     	if (len1 ==0 || len2 ==0) {
-    		return cartesianProduct;
+    		return null;
     	}
-    		for (int i = 0; i < len1; i++) {
-                mini[0] = set[i];
+    		for (int i = 0; i < size; i++) {
        			for (int j = 0; j < len2; j++) {
-                    mini[1] = args.set[j];
-                    minir.add(mini);
-                    cartesianProduct[k] = minir.toString();
+                    //int mini[] = new int[]{set[i], args.set[j]};
+                    //System.out.println(set[i]+ "  "+args.set[j]);
+                    //min.add(mini);
+                    cartesianProduct[k] = new int[]{set[i], args.set[j]};
                     k++;
-                    minir = null;
        			}
        		}
         return cartesianProduct;
