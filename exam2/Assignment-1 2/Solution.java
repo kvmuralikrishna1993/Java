@@ -136,16 +136,14 @@ class Set {
      *
      * @return     { description_of_the_return_value }
      */
-    public Set retainAll(Set args1) {
+    public Set retainAll(final int[] args) {
     	Set retain = new Set();
-    	/*for (int j = 0; j < args1.set.length; i++) {
-    		retain.add(args1.set[i])
-    	}
-       	for (int i = 0; i < set.length; i++) {
-       		if ()
-       		}
-       	} return set; */
-       	return null;
+       	for (int i = 0; i < args.length; i++) {
+            if (contains(args[i])) {
+                retain.add(args[i]);
+            }
+        }
+       	return retain;
     }
 	/**
      * { function cartesianProduct }.
@@ -155,24 +153,25 @@ class Set {
      *
      * @return     { description_of_the_return_value }
      */ 
-	public int[] cartesianProduct(final Set args1, Set args2) {
-    	final int len1 = args1.set.length;
-    	final int len2 = args2.set.length;
+	public int[] cartesianProduct(final Set args) {
+    	final int len1 = args.set.length;
+    	final int len2 = set.length;
     	Set cartesianProduct = new Set();
-    	int[] mini = new int[2];
+    	//int[] mini = new int[2];
     	//int[][] cartesian = new int[(len1*len2)][2];
+        int[] mini = new int[2];
+        int k = 0;
     	if (len1 ==0 || len2 ==0) {
-    		return cartesianProduct;
+    		return cartesianProduct.set;
     	}
     		for (int i = 0; i < len1; i++) {
-    			mini[i] = args1.set[i];
+                mini[0] = set[i];
        			for (int j = 0; j < len2; j++) {
-       				mini[j] = args2.set[j];
-       			cartesianProduct.add(mini[i]);
-       			cartesianProduct.add(mini[j]);
+                    mini[1] = args.set[j];
+                    cartesianProduct.add(mini);
        			}
        		}
-        return cartesianProduct;
+        return cartesianProduct.set;
     }
 }
 /**
@@ -255,7 +254,7 @@ public final class Solution {
                 intArray = intArray(tokens[2]);
                 System.out.println(s.retainAll(intArray));
                 break;
-                case "cartesianProduct":
+                /*case "cartesianProduct":
                 s = new Set();
                 t = new Set();
                 intArray = intArray(tokens[1]);
@@ -264,6 +263,7 @@ public final class Solution {
                 t.add(intArray);
                 System.out.println(Arrays.deepToString(s.cartesianProduct(t)));
                 break;
+                */
                 default:
                 break;
             }
