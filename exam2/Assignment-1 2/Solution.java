@@ -113,7 +113,7 @@ class Set {
             for(int j = 0; j < args.set.length; j++) {
                 //System.out.println(set[i]+" "+args.set[j]);
                 if (set[i] == args.set[j]) {
-                    inter.add(set[i]);
+                    inter.add(args.set[j]);
                 }
             }
     	} return inter; 
