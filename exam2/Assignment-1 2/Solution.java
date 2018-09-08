@@ -3,17 +3,27 @@ import java.util.Scanner;
 import java.util.Arrays;
 /**
  * Class for set.
- * @author : 
+ * @author :
  */
 class Set {
-	private int[] set;
-	private int size;
-	/**
-	 * Constructs the object.
-	 */
-    Set () {
-		set = new int[10];
-		size = 0;
+/**
+ * { array declaration }.
+ */
+    private int[] set;
+/**
+ * { size declaration }.
+ */
+    private int size;
+/**
+ * { array size }.
+ */
+    private final int var = 10;
+/**
+ * Constructs the object.
+ */
+    Set() {
+        set = new int[var];
+        size = 0;
     }
     /**
      * { Dynamic array }.
@@ -36,14 +46,14 @@ class Set {
      */
     public void add(final int item) {
         if (!contains(item)) {
-        	if (size < set.length) {
+            if (size < set.length) {
             set[size] = item;
             size += 1;
-        	} else {
+            } else {
             set = resize(set);
             set[size] = item;
             size += 1;
-        	}
+            }
         }
     }
     /**
@@ -65,7 +75,7 @@ class Set {
     public boolean contains(final int item) {
         for (int i = 0; i < size; i++) {
             if (set[i] == item) {
-            	return true;
+                return true;
             }
         }
         return false;
@@ -106,24 +116,21 @@ class Set {
      * @return     { description_of_the_return_value }
      */
     public Set intersection(final Set args) {
-    	Set inter = new Set();
-        //int[] array = new int[args.set.length];
-        //Arrays.sort(args.set, 0, args.set.length);
-    	for (int i = 0; i < size; i++) {
-            for(int j = 0; j < args.set.length; j++) {
-                //System.out.println(set[i]+" "+args.set[j]);
+        Set inter = new Set();
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < args.set.length; j++) {
                 if (set[i] == args.set[j]) {
                     inter.add(set[i]);
                 }
             }
-    	} return inter; 
+        } return inter;
     }
     /**
      * { remove function }.
      *
      * @param      index  The index
      */
-    public void remove(int index) {
+    public void remove(final int index) {
         if (index >= 0 && index < size) {
             for (int i = index; i < size - 1; i++) {
             set[i] = set[i + 1];
@@ -134,51 +141,44 @@ class Set {
         }
     }
     /**
-     * { function retainAll }
+     * { function_retainAll }.
      *
-     * @param      args1  The arguments 2
-     * @param      args2  The arguments 2
+     * @param      args  The arguments
      *
-     * @return     { description_of_the_return_value }
+     * @return     { Object }
      */
     public Set retainAll(final int[] args) {
-    	Set retain = new Set();
-       	for (int i = 0; i < size; i++) {
+        Set retain = new Set();
+        for (int i = 0; i < size; i++) {
             for (int j = 0; j < args.length; j++) {
                 if (set[i] == args[j]) {
                     retain.add(set[i]);
                 }
             }
         }
-       	return retain;
+        return retain;
     }
-	/**
+    /**
      * { function cartesianProduct }.
      *
-     * @param      args1  The arguments 2
-     * @param      args2  The arguments 2
+     * @param      args  The arguments
      *
-     * @return     { description_of_the_return_value }
-     */ 
-	public Object[] cartesianProduct(final Set args) {
-    	final int len1 = size;
-    	final int len2 = args.size();
-    	Object[] cartesianProduct = new Object[size*len2];
-        //Set min = new Set();
-        //int[] mini = new int[2];
+     * @return     { Object }
+     */
+    public Object[] cartesianProduct(final Set args) {
+        final int len1 = size;
+        final int len2 = args.size();
+        Object[] cartesianProduct = new Object[size * len2];
         int k = 0;
-    	if (len1 ==0 || len2 ==0) {
-    		return null;
-    	}
-    		for (int i = 0; i < size; i++) {
-       			for (int j = 0; j < len2; j++) {
-                    //int mini[] = new int[]{set[i], args.set[j]};
-                    //System.out.println(set[i]+ "  "+args.set[j]);
-                    //min.add(mini);
+        if (len1 == 0 || len2 == 0) {
+            return null;
+        }
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < len2; j++) {
                     cartesianProduct[k] = new int[]{set[i], args.set[j]};
                     k++;
-       			}
-       		}
+                }
+            }
         return cartesianProduct;
     }
 }
