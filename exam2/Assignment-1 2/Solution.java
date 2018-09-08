@@ -158,28 +158,28 @@ class Set {
      *
      * @return     { description_of_the_return_value }
      */ 
-	public int[] cartesianProduct(final Set args) {
+	public Object[] cartesianProduct(final Set args) {
     	final int len1 = args.set.length;
     	final int len2 = set.length;
-    	Set cartesianProduct = new Set();
-        if (len1 == 0 || len2 == 0) {
-            return cartesianProduct.set;
-        }
-    	//int[] mini = new int[2];
-    	//int[][] cartesian = new int[(len1*len2)][2];
+    	Object[] cartesianProduct = new Object[len1*len2];
+        Set minir = new Set();
+        //Set min = new Set();
         int[] mini = new int[2];
         int k = 0;
     	if (len1 ==0 || len2 ==0) {
-    		return cartesianProduct.set;
+    		return cartesianProduct;
     	}
     		for (int i = 0; i < len1; i++) {
                 mini[0] = set[i];
        			for (int j = 0; j < len2; j++) {
                     mini[1] = args.set[j];
-                    cartesianProduct.add(mini);
+                    minir.add(mini);
+                    cartesianProduct[k] = minir;
+                    k++;
+                    minir = null;
        			}
        		}
-        return cartesianProduct.set;
+        return cartesianProduct;
     }
 }
 /**
@@ -262,7 +262,7 @@ public final class Solution {
                 intArray = intArray(tokens[2]);
                 System.out.println(s.retainAll(intArray));
                 break;
-                /*case "cartesianProduct":
+                case "cartesianProduct":
                 s = new Set();
                 t = new Set();
                 intArray = intArray(tokens[1]);
@@ -271,7 +271,6 @@ public final class Solution {
                 t.add(intArray);
                 System.out.println(Arrays.deepToString(s.cartesianProduct(t)));
                 break;
-                */
                 default:
                 break;
             }
