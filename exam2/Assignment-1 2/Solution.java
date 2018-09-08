@@ -174,7 +174,7 @@ class Set {
        			for (int j = 0; j < len2; j++) {
                     mini[1] = args.set[j];
                     minir.add(mini);
-                    cartesianProduct[k] = minir;
+                    cartesianProduct[k] = minir.toString();
                     k++;
                     minir = null;
        			}
