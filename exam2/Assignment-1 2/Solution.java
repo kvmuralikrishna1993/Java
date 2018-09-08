@@ -109,7 +109,7 @@ class Set {
     	Set inter = new Set();
         //int[] array = new int[args.set.length];
         //Arrays.sort(args.set, 0, args.set.length);
-    	for (int i = 0; i < set.length; i++) {
+    	for (int i = 0; i < size; i++) {
             for(int j = 0; j < args.set.length; j++) {
                 if (set[i] == args.set[j]) {
                     inter.add(args.set[i]);
