@@ -109,10 +109,11 @@ class Set {
     	Set inter = new Set();
         //int[] array = new int[args.set.length];
         //Arrays.sort(args.set, 0, args.set.length);
-    	for (int i = 0; i <= size; i++) {
+    	for (int i = 0; i < size; i++) {
             for(int j = 0; j < args.set.length; j++) {
+                //System.out.println(set[i]+" "+args.set[j]);
                 if (set[i] == args.set[j]) {
-                    inter.add(args.set[i]);
+                    inter.add(set[i]);
                 }
             }
     	} return inter; 
