@@ -144,7 +144,7 @@ class Set {
     public Set retainAll(final int[] args) {
     	Set retain = new Set();
        	for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+            for (int j = 0; j < args.length; j++) {
                 if (set[i] == args[j]) {
                     retain.add(set[i]);
                 }
