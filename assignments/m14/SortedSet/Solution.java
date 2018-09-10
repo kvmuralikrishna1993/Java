@@ -228,7 +228,7 @@ class Set {
     public Set subSet(final int[] item) {
         Set subset = new Set();
         boolean flag = false;
-        if (item[0] >= item[1]) {
+        if (item[0] > item[1]) {
             return null;
         }
         int min = 0;
