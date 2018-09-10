@@ -65,20 +65,20 @@ class Set {
                     set[size] = item;
                     size += 1;
             }
-        } else {
-            set = resize(set);
-            for (int i = 0; i < size; i++) {
-                if (item < set[i]) {
-                    flag = true;
-                    position = i;
-                    break;
-                }
-            }
-            if (flag) {
-                addindex(position, item);
             } else {
-                set[size] = item;
-                size += 1;
+                set = resize(set);
+                    for (int i = 0; i < size; i++) {
+                        if (item < set[i]) {
+                            flag = true;
+                            position = i;
+                            break;
+                        }
+                    }
+                if (flag) {
+                    addindex(position, item);
+                } else {
+                    set[size] = item;
+                    size += 1;
                 }
             }
         }
@@ -231,9 +231,9 @@ class Set {
         if (item[0] > item[1]) {
             return null;
         }
-        if (item[0] == item[1]) {
-            return subset;
-        }
+        //if (item[0] == item[1]) {
+        //  return subset;
+        //}
         int min = 0;
         int max = 0;
         if (contains(item[0])) { //min check
