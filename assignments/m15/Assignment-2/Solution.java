@@ -208,11 +208,13 @@ class Set {
         return -1;
     }
     /**
-     * { function_description }.
+     * { function_headset }
      *
-     * @param      item  The item
+     * @param      item               The item
      *
      * @return     { description_of_the_return_value }
+     *
+     * @throws     SetEmptyException  { exception_description }
      */
     public Set headSet(final int item) throws SetEmptyException {
         Set hand = new Set();
@@ -233,9 +235,11 @@ class Set {
         } return hand;
     }
     /**
-     * { function_ last }.
+     * { function_description }
      *
-     * @return     { last element }
+     * @return     { description_of_the_return_value }
+     *
+     * @throws     SetEmptyException  { exception_description }
      */
     public int last() throws SetEmptyException {
         if (size == 0) {
@@ -244,17 +248,20 @@ class Set {
         return set[size - 1];
     }
     /**
-     * { function_ subset }.
+     * { function_description }
      *
-     * @param      item  The item
+     * @param      item                      The item
      *
-     * @return     { set }
+     * @return     { description_of_the_return_value }
+     *
+     * @throws     InvalidPositionException  { exception_description }
      */
     public Set subSet(final int[] item) throws InvalidPositionException {
         Set subset = new Set();
         boolean flag = false;
         if (item[0] > item[1]) {
-            throw new InvalidPositionException("Invalid Arguments to Subset Exception");
+            throw new InvalidPositionException(
+                "Invalid Arguments to Subset Exception");
         }
         int min = 0; //intial position
         int max = 0;  // final position
