@@ -65,7 +65,7 @@ class Set {
         return temp;
     }
     /**
-     * { function_description }.
+     * { function_add }.
      *
      * @param      item  The item
      */
@@ -147,7 +147,7 @@ class Set {
         }
     }
     /**
-     * { function_description }.
+     * { function_remove }.
      *
      * @param      index                     The index
      *
@@ -179,7 +179,7 @@ class Set {
         return -1;
     }
     /**
-     * { function_description }.
+     * { function_headset }.
      *
      * @param      item  The item
      *
@@ -215,7 +215,7 @@ class Set {
         return set[size - 1];
     }
     /**
-     * { function_description }.
+     * { function_sublist }.
      *
      * @param      item                       The item
      * @return     { description_of_the_return_value }
