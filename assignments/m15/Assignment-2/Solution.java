@@ -66,7 +66,7 @@ class Set {
         return temp;
     }
     /**
-     * { function_description }.
+     * { function_add }.
      *
      * @param      item  The item
      */
@@ -208,7 +208,7 @@ class Set {
         return -1;
     }
     /**
-     * { function_headset }
+     * { function_headset }.
      *
      * @param      item               The item
      *
@@ -235,7 +235,7 @@ class Set {
         } return hand;
     }
     /**
-     * { function_description }
+     * { function_last }.
      *
      * @return     { description_of_the_return_value }
      *
@@ -248,7 +248,7 @@ class Set {
         return set[size - 1];
     }
     /**
-     * { function_description }
+     * { function_subset }.
      *
      * @param      item                      The item
      *
