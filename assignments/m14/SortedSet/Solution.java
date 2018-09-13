@@ -1,5 +1,6 @@
 import java.io.BufferedInputStream;
 import java.util.Scanner;
+import java.util.Arrays;
 /**
  * Exception for signaling invalid position errors.
  */
@@ -16,13 +17,13 @@ class InvalidPositionException extends Exception {
 /**
  * Exception for signaling index outof bounds errors.
  */
-class IndexOutofBoundsException extends Exception {
+class SetEmptyException extends Exception {
     /**
      * Constructs the object.
      *
      * @param      s     { parameter_description }
      */
-    IndexOutofBoundsException(final String s) {
+    SetEmptyException(final String s) {
         super(s);
     }
 }
@@ -70,14 +71,43 @@ class Set {
      * @param      item  The item
      */
     public void add(final int item) {
-            if (size < set.length) {
-                set[size] = item;
-                size += 1;
-            } else {
-                set = resize(set);
+        boolean flag = false;
+        int position = 0;
+        if (size == 0) {
+            set[size] = item;
+        }
+        if (!contains(item)) {
+            if (size < set.length - 1) {
+                for (int i = 0; i < size; i++) {
+                    if (item < set[i]) {
+                        flag = true;
+                        position = i;
+                        break;
+                    }
+                }
+                if (flag) {
+                    add(position, item);
+                } else {
                     set[size] = item;
                     size += 1;
             }
+            } else {
+                set = resize(set);
+                    for (int i = 0; i < size; i++) {
+                        if (item < set[i]) {
+                            flag = true;
+                            position = i;
+                            break;
+                        }
+                    }
+                if (flag) {
+                    add(position, item);
+                } else {
+                    set[size] = item;
+                    size += 1;
+                }
+            }
+        }
     }
     /**
      * { returns size of list.}.
@@ -97,7 +127,10 @@ class Set {
     public void add(final int index, final int item) {
         if (index >= 0 && index < size) {
             for (int i = size; i > index; i--) {
+                //System.out.println(i+" "+set[i]+" "+set[i-1]);
+                //System.out.println(set[i-1]);
                 set[i] = set[i - 1];
+                //System.out.println(set[i]);
             }
             set[index] = item;
             size++;
@@ -125,15 +158,15 @@ class Set {
      */
     public String toString() {
         // Replace the code below
-        String str = "[";
-        String cmm = ",";
+        String str = "{";
+        String cmm = ", ";
         for (int i = 0; i < size; i++) {
             if (i == size - 1) {
                 cmm = "";
             }
             str = str + Integer.toString(set[i]) + cmm;
         }
-        str = str + ']';
+        str = str + '}';
         return str;
     }
      /**
@@ -147,20 +180,16 @@ class Set {
         }
     }
     /**
-     * { function_remove }.
+     * { remove function }.
      *
-     * @param      index                     The index
-     *
-     * @throws     InvalidPositionException  { exception_description }
+     * @param      index  The index
      */
-    public void remove(final int index) throws InvalidPositionException {
+    public void remove(final int index) {
         if (index >= 0 && index < size) {
-            for (int i = index; i < size; i++) {
+            for (int i = index; i < size - 1; i++) {
                 set[i] = set[i + 1];
             }
-            size--;
-        } else {
-            throw new InvalidPositionException("Invalid Position Exception");
+            size -= 1;
         }
     }
     /**
@@ -181,144 +210,119 @@ class Set {
     /**
      * { function_headset }.
      *
-     * @param      item  The item
+     * @param      item               The item
      *
      * @return     { description_of_the_return_value }
+     *
+     * @throws     SetEmptyException  { exception_description }
      */
-    public Set headSet(final int item) {
+    public Set headSet(final int item) throws SetEmptyException {
         Set hand = new Set();
         int min = 0;
-        boolean flag = false;
-        if (indexOf(item) == -1) {      // checking element index.
+        if (indexOf(item) == 0 || item < indexOf(set[0])) {
+            throw new SetEmptyException("Set Empty Exception");
+        } else if (contains(item)) {
+            min = indexOf(item);
+        } else {
             for (int i = 0; i < size; i++) {
                 if (item >= set[i]) {
                     min = i + 1;
-                    flag = true;
                 }
             }
-        } else {
-            min = indexOf(item);
         }
         for (int i = 0; i < min; i++) { //addin to object.
                 hand.add(set[i]);
         } return hand;
     }
     /**
-     * { function_ last }.
+     * { function_last }.
      *
-     * @return     { last element }
+     * @return     { description_of_the_return_value }
+     *
+     * @throws     SetEmptyException  { exception_description }
      */
-    public int last() {
+    public int last() throws SetEmptyException {
         if (size == 0) {
-            return -1;
+            throw new SetEmptyException("Set Empty Exception");
         }
         return set[size - 1];
     }
     /**
-     * { function_sublist }.
+     * { function_subset }.
      *
-     * @param      item                       The item
+     * @param      item                      The item
+     *
      * @return     { description_of_the_return_value }
-     * @throws     IndexOutofBoundsException  {type}.
+     *
+     * @throws     InvalidPositionException  { exception_description }
      */
-    public Set subList(final int[] item) throws IndexOutofBoundsException {
+    public Set subSet(final int[] item) throws InvalidPositionException {
         Set subset = new Set();
-        int max = 0;
-        int min = 0;
-        if (item[0] > -1 && item[0] < size) {
-            min = item[0];
-        } else {
-            throw new IndexOutofBoundsException(
-                "Index Out of Bounds Exception");
+        boolean flag = false;
+        if (item[0] > item[1]) {
+            throw new InvalidPositionException(
+                "Invalid Arguments to Subset Exception");
         }
-        if (item[1] == size) {
-            max = size;
-        } else if (item[1] > 0 && item[1] < size) {
-            max = item[1];
+        int min = 0; //intial position
+        int max = 0;  // final position
+        if (contains(item[0])) { //min check
+            min = indexOf(item[0]);
         } else {
-            return null;
+            for (int i = size - 1; i >= 0; i--) {
+                if (item[0] <= set[i]) {
+                    min = i;
+                    flag = true;
+                }
+            }
+        }
+        if (contains(item[1])) { // max check
+            max = indexOf(item[1]);
+        } else {
+            for (int i = 0; i < size; i++) {
+                if (item[1] >= set[i]) {
+                    max = i + 1;
+                    flag = true;
+                }
+            }
         }
         for (int i = min; i < max; i++) { //adding values to object
             subset.add(set[i]);
         } return subset;
     }
     /**
-     * { returns the index of list}.
-     *
-     * @param      index  The index.
-     *
-     * @return     { index.}
-     */
-    public int get(final int index) {
-        if (index < size && index > -1) {
-            return set[index];
-        } else {
-            return -1;
-        }
-    }
-    /**
-     * { count of element }.
-     *
-     * @param      item  element
-     *
-     * @return     { count of element}
-     */
-    public int count(final int item) {
-        //Inserts the specified element at the end of the list.
-        int cou = 0;
-        for (int i = 0; i < size; i++) {
-            if (set[i] == item) {
-                cou++;
-            }
-        }
-        return cou;
-    }
-    /**
-     * Removes all.
+     * { intersection function}.
      *
      * @param      args  The arguments
+     *
+     * @return     { description_of_the_return_value }
      */
-    public void removeAll(final int[] args) {
-        if (size > 0) {
-            for (int i = 0; i < args.length; i++) {
-                if (contains(args[i])) {
-                    for (int j = 0;
-                        j < count(args[i]); j++) {
-                        try {
-                            remove(indexOf(args[i]));
-                        } catch (InvalidPositionException ex) {
-
-                        }
-                        j--;
-                    }
+    public Set intersection(final Set args) {
+        Set inter = new Set();
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < args.size(); j++) {
+                if (set[i] == args.set[j]) {
+                    inter.add(set[i]);
+                }
+            }
+        } return inter;
+    }
+    /**
+     * { function_retainAll }.
+     *
+     * @param      args  The arguments
+     *
+     * @return     { Object }
+     */
+    public Set retainAll(final Set args) {
+        Set retain = new Set();
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < args.size(); j++) {
+                if (set[i] == args.set[j]) {
+                    retain.add(set[i]);
                 }
             }
         }
-    }
-    /**
-     * { function clear}.
-     */
-    public void clear() {
-        for (int i = 0; i < size; i++) {
-            set[i] = 0;
-        } size = 0;
-    }
-    /**
-     * { checking list object}.
-     *
-     * @param      newlist  The newlist
-     * @return     { description_of_the_return_value }
-     */
-    public boolean equals(final int[] newlist) {
-        if (size == 0) {
-            return false;
-        }
-        for (int i = 0; i < newlist.length; i++) {
-            if (newlist[i] != set[i]) {
-                return false;
-            }
-        }
-        return true;
+        return retain;
     }
 }
 /**
@@ -345,6 +349,25 @@ public final class Solution {
             temp[i] = Integer.parseInt(tokens[i]);
         }
         return temp;
+    }
+    /**
+     * helper function to convert string input to int array.
+     *
+     * @param      s     { string input from test case file }
+     *
+     * @return     { int array from the given string }
+     */
+    public static int[] intArray(final String s) {
+        String input = s;
+        if (input.equals("[]")) {
+            return new int[0];
+        }
+        if (s.contains("[")) {
+            input = s.substring(1, s.length() - 1);
+        }
+        return Arrays.stream(input.split(","))
+                            .mapToInt(Integer::parseInt)
+                            .toArray();
     }
     /**
      * main function to execute test cases.
@@ -376,50 +399,47 @@ public final class Solution {
                 case "add":
                 s.add(Integer.parseInt(tokens[1]));
                 break;
-                case "remove":
-                try {
-                s.remove(Integer.parseInt(tokens[1]));
-                } catch (InvalidPositionException ex) {
-                    System.out.println(ex.getMessage());
-                }
-                break;
-                case "removeAll":
-                if (tokens.length > 1) {
-                s.removeAll(convert(tokens[1]));
-                }
-                break;
-                case "get":
-                System.out.println(s.get(Integer.parseInt(tokens[1])));
-                break;
-                case "indexOf":
-                System.out.println(s.indexOf(Integer.parseInt(tokens[1])));
-                break;
-                case "clear":
-                s.clear();
-                break;
-                case "equals":
-                if (tokens.length > 1) {
-                System.out.println(s.equals(convert(tokens[1])));
-                }
-                break;
-                case "count":
-                System.out.println(s.count(Integer.parseInt(tokens[1])));
-                break;
                 case "addAll":
                 s.addAll(convert(tokens[1]));
                 break;
                 case "last":
-                System.out.println(s.last());
+                try {
+                    System.out.println(s.last());
+                } catch (SetEmptyException ex) {
+                    System.out.println("Set Empty Exception");
+                }
                 break;
                 case "headSet":
-                System.out.println(s.headSet(Integer.parseInt(tokens[1])));
+                try {
+                    System.out.println(s.headSet(Integer.parseInt(tokens[1])));
+                } catch (SetEmptyException ex) {
+                    System.out.println("Set Empty Exception");
+                }
                 break;
-                case "subList":
+                case "intersection":
+                Set t = new Set();
+                Set i = new Set();
+                int[] intArray = intArray(tokens[1]);
+                i.addAll(intArray);
+                intArray = intArray(tokens[2]);
+                t.addAll(intArray);
+                System.out.println(i.intersection(t));
+                break;
+                case "retainAll":
+                Set r = new Set();
+                Set q = new Set();
+                intArray = intArray(tokens[1]);
+                q.addAll(intArray);
+                intArray = intArray(tokens[2]);
+                r.addAll(intArray);
+                System.out.println(q.retainAll(r));
+                break;
+                case "subSet":
                 int[] array = convert(tokens[1]);
                 try {
-                    System.out.println(s.subList(convert(tokens[1])));
-                } catch (IndexOutofBoundsException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println(s.subSet(convert(tokens[1])));
+                } catch (InvalidPositionException ex) {
+                    System.out.println("Invalid Arguments to Subset Exception");
                 }
                 break;
                 default:
