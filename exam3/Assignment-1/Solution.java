@@ -118,7 +118,6 @@ public final class Solution {
 				} catch(InvalidQuestionException ex) {
 					System.out.println("Quiz does not have questions");
 				}
-				System.out.println(tokens[1] + " are added to the quiz");
 				break;
 				case "START_QUIZ":
 				System.out.println("|------------|");
@@ -166,7 +165,7 @@ public final class Solution {
 				else {
 					quiz.add(new Question(lines[0],lines[1],Integer.parseInt(lines[2]),Integer.parseInt(lines[3]),Integer.parseInt(lines[4])));
 				}
-			}
+			} System.out.println(questionCount + " are added to the quiz");
 		}
 		else {
 			throw new InvalidQuestionException("Quiz does not have questions");
