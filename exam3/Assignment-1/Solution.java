@@ -31,16 +31,12 @@ class Quiz {
 		ans[anscount] = args;
 		anscount++;    
 	}
-	public void compare() throws InvalidQuestionException {
+	public void compare() {
 		int total = 0;
 		String[] str = new String[anscount];
 		if (questioncount == anscount) {
 			for (int i = 0; i < questioncount; i++) {
 				String[] temp = qns[i].choice.split(",");
-				if (qns[i].answer > temp.length) {
-					throw new InvalidQuestionException(
-						"Error! Correct answer choice number is out of range for <question text>");
-				}
 				Arrays.sort(temp);
 				int index = Arrays.binarySearch(temp, ans[i].answer);
 				if (qns[i].answer == index+1) {
@@ -172,13 +168,12 @@ public final class Solution {
 				int marks = Integer.parseInt(lines[3]);
 				if (lines.length != 5) {
 					throw new InvalidQuestionException("Error! Malformed question");
-					//return;
 				} 
 				else if (marks <= 0) {
 					throw new InvalidQuestionException("Invalid max marks for <question text>");
-					//return;
-				} 
-				else {
+				} else if (Integer.parseInt(lines[2]) > 5) {
+					throw new InvalidQuestionException("Error! Correct answer choice number is out of range for <question text>");
+				} else {
 					quiz.add(new Question(lines[0],lines[1],Integer.parseInt(lines[2]),
 						Integer.parseInt(lines[3]),Integer.parseInt(lines[4])));
 				}
@@ -231,10 +226,6 @@ public final class Solution {
 	 */
 	public static void displayScore(final Quiz quiz) {
 		// write your code here to display the score report
-		try {
-		quiz.compare();			
-		} catch(InvalidQuestionException ex) {
-
-		}
+		quiz.compare();
 	}
 }
