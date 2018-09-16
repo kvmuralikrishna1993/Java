@@ -98,6 +98,7 @@ public final class Solution {
 	public static void main(final String[] args) {
 		 // instantiate this Quiz
 		Quiz q = new Quiz();
+		boolean flag = true;
 		 // code to read the test cases input file
 		Scanner s = new Scanner(System.in);
 		// check if there is one more line to process
@@ -117,19 +118,24 @@ public final class Solution {
 					loadQuestions(s, q, Integer.parseInt(tokens[1]));
 				} catch(InvalidQuestionException ex) {
 					System.out.println("Quiz does not have questions");
+					flag = false;
 				}
 				break;
 				case "START_QUIZ":
 				System.out.println("|------------|");
 				System.out.println("| Start Quiz |");
 				System.out.println("|------------|");
+				if (flag) {
 				startQuiz(s, q, Integer.parseInt(tokens[1]));
+				}
 				break;
 				case "SCORE_REPORT":
 				System.out.println("|--------------|");
 				System.out.println("| Score Report |");
 				System.out.println("|--------------|");
+				if (flag) {
 				displayScore(q);
+				}
 				break;
 				default:
 				break;
