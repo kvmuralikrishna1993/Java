@@ -165,7 +165,7 @@ public final class Solution {
 					throw new InvalidQuestionException("Error! Malformed question");
 				} else if (lines[0].length() < 2) {
 					throw new InvalidQuestionException("Error! Malformed question");
-				} else if (Integer.parseInt(lines[4]) >= 0) {
+				} else if (Integer.parseInt(lines[4]) > 0) {
 					throw new InvalidQuestionException("Invalid penalty for "+lines[0]);
 				} else if (choices.length < 2) {
 					throw new InvalidQuestionException(lines[0]+" does not have enough answer choices");
