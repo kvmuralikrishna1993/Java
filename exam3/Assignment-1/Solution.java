@@ -202,7 +202,7 @@ public final class Solution {
 			for(int j = 0; j < choices.length; j++) {
 				System.out.print(choices[j]);
 				if (j < (choices.length - 1)) {
-					System.out.print("	");
+					System.out.print("\t");
 				}
 			} System.out.println();
 			System.out.println();
