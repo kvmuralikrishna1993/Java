@@ -45,6 +45,7 @@ class Quiz {
 				int index = Arrays.binarySearch(temp, ans[i].answer);
 				if (qns[i].answer == index+1) {
 					total += qns[i].marks;
+					System.out.println(qns[i].questions);
 					System.out.println(" Correct Answer! - Marks Awarded: " + Integer.toString(qns[i].marks));
 				} else {
 					total += qns[i].penalty;
