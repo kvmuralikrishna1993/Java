@@ -118,6 +118,7 @@ public final class Solution {
 					loadQuestions(s, q, Integer.parseInt(tokens[1]));
 				} catch(InvalidQuestionException ex) {
 					System.out.println(ex.getMessage());
+					flag = false; 
 				}
 				break;
 				case "START_QUIZ":
@@ -125,7 +126,9 @@ public final class Solution {
 				System.out.println("| Start Quiz |");
 				System.out.println("|------------|");
 					try {
-						startQuiz(s, q, Integer.parseInt(tokens[1]));
+						if (flag) {
+							startQuiz(s, q, Integer.parseInt(tokens[1]));	
+						}
 					} catch(InvalidQuestionException ex) {
 					System.out.println(ex.getMessage());
 				}
@@ -135,7 +138,9 @@ public final class Solution {
 				System.out.println("| Score Report |");
 				System.out.println("|--------------|");
 				//try {
+				if (flag) {
 				displayScore(q);
+				}
 				//} catch(InvalidQuestionException ex) {
 				//	System.out.println(ex.getMessage());
 				//}
