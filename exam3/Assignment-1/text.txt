@@ -1,7 +1,8 @@
 |----------------|
 | Load Questions |
 |----------------|
-Error! Correct answer choice number is out of range for question text 1
+1
+trick question  does not have enough answer choices
 |------------|
 | Start Quiz |
 |------------|

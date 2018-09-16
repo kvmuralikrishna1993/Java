@@ -121,13 +121,9 @@ public final class Solution {
 				System.out.println("|------------|");
 				System.out.println("| Start Quiz |");
 				System.out.println("|------------|");
-					try {
 						if (flag) {
 							startQuiz(s, q, Integer.parseInt(tokens[1]));	
 						}
-					} catch(InvalidQuestionException ex) {
-					System.out.println(ex.getMessage());
-				}
 				break;
 				case "SCORE_REPORT":
 				System.out.println("|--------------|");
@@ -137,9 +133,6 @@ public final class Solution {
 				if (flag) {
 				displayScore(q);
 				}
-				//} catch(InvalidQuestionException ex) {
-				//	System.out.println(ex.getMessage());
-				//}
 				break;
 				default:
 				break;
@@ -165,14 +158,16 @@ public final class Solution {
 			for (int i = 0; i < questionCount; i++ ) {
 				String line = s.nextLine();
 				lines = line.split(":");
+				String[] choices = lines[1].split(",");
 				int marks = Integer.parseInt(lines[3]);
 				if (lines.length != 5) {
 					throw new InvalidQuestionException("Error! Malformed question");
-				} 
-				else if (marks <= 0) {
-					throw new InvalidQuestionException("Invalid max marks for <question text>");
+				} else if (choices.length < 2) {
+					throw new InvalidQuestionException(lines[0]+" does not have enough answer choices");
 				} else if (Integer.parseInt(lines[2]) > 5) {
 					throw new InvalidQuestionException("Error! Correct answer choice number is out of range for "+lines[0]);
+				} else if (marks <= 0) {
+					throw new InvalidQuestionException("Invalid max marks for "+lines[0]);
 				} else {
 					quiz.add(new Question(lines[0],lines[1],Integer.parseInt(lines[2]),
 						Integer.parseInt(lines[3]),Integer.parseInt(lines[4])));
@@ -191,16 +186,13 @@ public final class Solution {
 	 * @param      quiz         The quiz object
 	 * @param      answerCount  The answer count
 	 */
-	public static void startQuiz(final Scanner s, final Quiz quiz, final int answerCount) throws InvalidQuestionException {
+	public static void startQuiz(final Scanner s, final Quiz quiz, final int answerCount) {
 		// write your code here to display the quiz questions
 		// read the user responses from the console
 		// store the user respones in the quiz object
 		String[] choices = new String[4];
 		for (int i = 0; i < answerCount; i++) {
 			choices = quiz.qns[i].choice.split(",");
-			if (choices.length < 2) {
-				throw new InvalidQuestionException("<question text> does not have enough answer choices");
-			}
 			System.out.println(quiz.qns[i].questions+"("+Integer.toString(quiz.qns[i].marks)+")");
 			for(int j = 0; j < choices.length; j++) {
 				System.out.print(choices[j]);
