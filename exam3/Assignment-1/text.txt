@@ -1,11 +1,17 @@
 |----------------|
 | Load Questions |
 |----------------|
-1
-trick question  does not have enough answer choices
+1 are added to the quiz
 |------------|
 | Start Quiz |
 |------------|
+question about sony(1)
+choice 4	choice 2
+
 |--------------|
 | Score Report |
 |--------------|
+0
+question about sony
+ Correct Answer! - Marks Awarded: 1
+Total Score: 1
