@@ -1,4 +1,15 @@
-import java.util.Scanner;
+import java.util.Scanner; 
+import java.util.Arrays; 
+class InvalidQuestionException extends Exception {
+    /**
+     * Constructs the object.
+     *
+     * @param      s     { parameter_description }
+     */
+    InvalidQuestionException(final String s) {
+        super(s);
+    }
+}
 class Quiz {
 	public Question[] qns;
 	private int questioncount;
@@ -25,9 +36,15 @@ class Quiz {
 		String[] str = new String[anscount];
 		if (questioncount == anscount) {
 			for (int i = 0; i < questioncount; i++) {
-				if (qns[i].answer.equals(ans[i].answer)) {
+				String[] temp = qns[i].choice.split(",");
+				if (qns[i].answer > temp.length) {
+					System.out.println("Error! Correct answer choice number is out of range for <question text>");
+					return;
+				}
+				Arrays.sort(temp);
+				int index = Arrays.binarySearch(temp, ans[i].answer);
+				if (qns[i].answer == index+1) {
 					total += qns[i].marks;
-					System.out.println(qns[i].questions);
 					System.out.println(" Correct Answer! - Marks Awarded: " + Integer.toString(qns[i].marks));
 				} else {
 					total += qns[i].penalty;
@@ -42,10 +59,10 @@ class Quiz {
 class Question {
 String questions;
 String choice;
-String answer;
+int answer;
 int marks;
 int penalty;
-	Question(String questions, String choice, String answer, int marks, int penalty)  {
+	Question(String questions, String choice, int answer, int marks, int penalty) {
 		this.questions = questions;
 		this.choice = choice;
 		this.answer = answer;
@@ -54,10 +71,10 @@ int penalty;
 	}
 }
 class Answer {
-String choice;
+//String choice;
 String answer;
-	Answer(String choice, String answer)  {
-		this.choice = choice;
+	Answer(String answer)  {
+		//this.choice = choice;
 		this.answer = answer;
 	}
 }
@@ -95,8 +112,12 @@ public final class Solution {
 				System.out.println("|----------------|");
 				System.out.println("| Load Questions |");
 				System.out.println("|----------------|");
-				loadQuestions(s, q, Integer.parseInt(tokens[1]));
-				System.out.println(tokens[1] + " are added to the quiz");
+				try {
+					loadQuestions(s, q, Integer.parseInt(tokens[1]));
+					System.out.println(tokens[1] + " are added to the quiz");
+				} catch(InvalidQuestionException ex) {
+					System.out.println("Quiz does not have questions");
+				}
 				break;
 				case "START_QUIZ":
 				System.out.println("|------------|");
@@ -122,16 +143,32 @@ public final class Solution {
 	 * @param      quiz           The quiz object
 	 * @param      questionCount  The question count
 	 */
-	public static void loadQuestions(final Scanner s, final Quiz quiz, final int questionCount) {
+	public static void loadQuestions(final Scanner s, final Quiz quiz, final int questionCount) throws InvalidQuestionException {
 		// write your code here to read the questions from the console
 		// tokenize the question line and create the question object
 		// add the question objects to the quiz class
 		//Question[] arr = new Question[10];
-		String[] lines =  new String[5];
-		for (int i = 0; i < questionCount; i++ ) {
-			String line = s.nextLine();
-			lines = line.split(":");
-			quiz.add(new Question(lines[0],lines[1],lines[2],Integer.parseInt(lines[3]),Integer.parseInt(lines[4])));
+		if (questionCount > 0) {
+			String[] lines =  new String[5];
+			for (int i = 0; i < questionCount; i++ ) {
+				String line = s.nextLine();
+				lines = line.split(":");
+				int marks = Integer.parseInt(lines[3]);
+				if (lines.length != 5) {
+					System.out.println("Error! Malformed question");
+					return;
+				} 
+				else if (marks <= 0) {
+					System.out.println("Invalid max marks for <question text>");
+					return;
+				} 
+				else {
+					quiz.add(new Question(lines[0],lines[1],Integer.parseInt(lines[2]),Integer.parseInt(lines[3]),Integer.parseInt(lines[4])));
+				}
+			}
+		}
+		else {
+			throw new InvalidQuestionException("Quiz does not have questions");
 		}
 	}   
 
@@ -148,8 +185,12 @@ public final class Solution {
 		// store the user respones in the quiz object
 		String[] choices = new String[4];
 		for (int i = 0; i < answerCount; i++) {
-			System.out.println(quiz.qns[i].questions+"("+Integer.toString(quiz.qns[i].marks)+")");
 			choices = quiz.qns[i].choice.split(",");
+			if (choices.length < 2) {
+				System.out.println("<question text> does not have enough answer choices");
+				return;
+			}
+			System.out.println(quiz.qns[i].questions+"("+Integer.toString(quiz.qns[i].marks)+")");
 			for(int j = 0; j < choices.length; j++) {
 				System.out.print(choices[j]);
 				if (j < (choices.length - 1)) {
@@ -161,8 +202,8 @@ public final class Solution {
 		String[] lines = new String[answerCount];
 		for (int i = 0; i < answerCount; i++ ) {
 			String line = s.nextLine();
-			lines = line.split(" ");
-			quiz.add(new Answer(lines[0], lines[1]));
+			//lines = line.split(" ");
+			quiz.add(new Answer(line));
 		}
 	
 	}
