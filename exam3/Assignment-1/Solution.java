@@ -115,11 +115,10 @@ public final class Solution {
 				System.out.println("|----------------|");
 				try {
 					loadQuestions(s, q, Integer.parseInt(tokens[1]));
-					System.out.println(tokens[1] + " are added to the quiz");
 				} catch(InvalidQuestionException ex) {
 					System.out.println("Quiz does not have questions");
-					return;
 				}
+				System.out.println(tokens[1] + " are added to the quiz");
 				break;
 				case "START_QUIZ":
 				System.out.println("|------------|");
