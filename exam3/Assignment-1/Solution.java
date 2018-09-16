@@ -39,6 +39,7 @@ class Quiz {
 				String[] temp = qns[i].choice.split(",");
 				if (qns[i].answer > temp.length) {
 					System.out.println("Error! Correct answer choice number is out of range for <question text>");
+					//flag =  false;
 					return;
 				}
 				Arrays.sort(temp);
@@ -87,8 +88,10 @@ public final class Solution {
 	 /**
 	 * Constructs the object.
 	 */
+	static boolean flag;
 	private Solution() {
 		// leave this blank
+		flag = true;
 	}
 	/**
 	 * main function to execute test cases.
@@ -98,7 +101,6 @@ public final class Solution {
 	public static void main(final String[] args) {
 		 // instantiate this Quiz
 		Quiz q = new Quiz();
-		boolean flag = true;
 		 // code to read the test cases input file
 		Scanner s = new Scanner(System.in);
 		// check if there is one more line to process
@@ -162,10 +164,12 @@ public final class Solution {
 				int marks = Integer.parseInt(lines[3]);
 				if (lines.length != 5) {
 					System.out.println("Error! Malformed question");
+					flag = false;
 					return;
 				} 
 				else if (marks <= 0) {
 					System.out.println("Invalid max marks for <question text>");
+					flag = false;
 					return;
 				} 
 				else {
@@ -194,6 +198,7 @@ public final class Solution {
 			choices = quiz.qns[i].choice.split(",");
 			if (choices.length < 2) {
 				System.out.println("<question text> does not have enough answer choices");
+				flag = false;
 				return;
 			}
 			System.out.println(quiz.qns[i].questions+"("+Integer.toString(quiz.qns[i].marks)+")");
