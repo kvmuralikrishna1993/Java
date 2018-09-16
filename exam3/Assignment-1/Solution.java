@@ -172,7 +172,7 @@ public final class Solution {
 				else if (marks <= 0) {
 					throw new InvalidQuestionException("Invalid max marks for <question text>");
 				} else if (Integer.parseInt(lines[2]) > 5) {
-					throw new InvalidQuestionException("Error! Correct answer choice number is out of range for <question text>");
+					throw new InvalidQuestionException("Error! Correct answer choice number is out of range for "+lines[0]);
 				} else {
 					quiz.add(new Question(lines[0],lines[1],Integer.parseInt(lines[2]),
 						Integer.parseInt(lines[3]),Integer.parseInt(lines[4])));
