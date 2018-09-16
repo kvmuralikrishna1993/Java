@@ -39,7 +39,7 @@ class Quiz {
 				String[] temp = qns[i].choice.split(",");
 				//Arrays.sort(temp);
 				int index = Arrays.binarySearch(temp, ans[i].answer);
-				System.out.println(index);
+				//System.out.println(index);
 				if (qns[i].answer == index+1) {
 					total += qns[i].marks;
 					System.out.println(qns[i].questions);
