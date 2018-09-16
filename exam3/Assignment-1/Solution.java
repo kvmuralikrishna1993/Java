@@ -39,8 +39,7 @@ class Quiz {
 				String[] temp = qns[i].choice.split(",");
 				if (qns[i].answer > temp.length) {
 					System.out.println("Error! Correct answer choice number is out of range for <question text>");
-					return;
-				}
+					System.exit(0);				}
 				Arrays.sort(temp);
 				int index = Arrays.binarySearch(temp, ans[i].answer);
 				if (qns[i].answer == index+1) {
@@ -118,6 +117,7 @@ public final class Solution {
 					System.out.println(tokens[1] + " are added to the quiz");
 				} catch(InvalidQuestionException ex) {
 					System.out.println("Quiz does not have questions");
+					return;
 				}
 				break;
 				case "START_QUIZ":
@@ -157,12 +157,11 @@ public final class Solution {
 				int marks = Integer.parseInt(lines[3]);
 				if (lines.length != 5) {
 					System.out.println("Error! Malformed question");
-					return;
+					System.exit(0);
 				} 
 				else if (marks <= 0) {
 					System.out.println("Invalid max marks for <question text>");
-					return;
-				} 
+					System.exit(0);				} 
 				else {
 					quiz.add(new Question(lines[0],lines[1],Integer.parseInt(lines[2]),Integer.parseInt(lines[3]),Integer.parseInt(lines[4])));
 				}
@@ -189,8 +188,7 @@ public final class Solution {
 			choices = quiz.qns[i].choice.split(",");
 			if (choices.length < 2) {
 				System.out.println("<question text> does not have enough answer choices");
-				return;
-			}
+				System.exit(0);			}
 			System.out.println(quiz.qns[i].questions+"("+Integer.toString(quiz.qns[i].marks)+")");
 			for(int j = 0; j < choices.length; j++) {
 				System.out.print(choices[j]);
