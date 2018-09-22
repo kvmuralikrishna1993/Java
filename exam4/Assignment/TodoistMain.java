@@ -26,8 +26,18 @@ class Todoist {
         taskarray[taskscount] = args;
         taskscount++;
     }
-    public String getNextTask(String args) {
-        return "a";
+    public Task getNextTask(String args) {
+        for (int i = 0; i < taskscount; i++)
+            if (taskarray[i].assignedTo.equals(args)) {
+                if(taskarray[i].equals("todo")){
+                    if(taskarray[i].important == true) {
+                        if(taskarray[i].urgent == false) {
+                            return taskarray[i];
+                        }
+                    }
+                } 
+            }
+        return null;
     }
     public String totalTime4Completion() {
         return "b";
