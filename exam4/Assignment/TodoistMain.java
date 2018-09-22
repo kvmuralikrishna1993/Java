@@ -1,5 +1,19 @@
 import java.util.Scanner;
 import java.util.Arrays;
+/**
+ * Exception for signaling invalid question errors.
+ */
+class InvalidException extends Exception {
+    /**
+     * Constructs the object.
+     *
+     * @param      s     { parameter_description }
+     */
+    InvalidException(final String s) {
+        super(s);
+    }
+}
+
 class Todoist { 
     Task[] taskarray;
     final int val = 30;
@@ -47,11 +61,11 @@ class Task {
     }
     public String toString() {
         String str = "";
-            String imp = (this.important == true) ? "Important" : "Not Important";
-            String urg = (this.urgent == true) ? "Urgent" : "Not Urgent";
-            str += this.title+", "+this.assignedTo+", "+
-                Integer.toString(this.timeToComplete)+", "+imp+", "+urg+", "+
-                this.status;
+        String imp = (this.important == true) ? "Important" : "Not Important";
+        String urg = (this.urgent == true) ? "Urgent" : "Not Urgent";
+        str += this.title+", "+this.assignedTo+", "+
+            Integer.toString(this.timeToComplete)+", "+imp+", "+urg+", "+
+            this.status;
         return str;
     }
 }
@@ -136,13 +150,28 @@ public class TodoistMain {
      *
      * @throws     Exception  if task inputs are invalid
      */
-    public static Task createTask(final String[] tokens) throws Exception {
-        String title = tokens[1];
+    public static Task createTask(final String[] tokens) throws InvalidException {
+        String title = "";
+        int timeToComplete = 0;
+        String status= "";
+        if (tokens[1] != "") {
+            title = tokens[1];
+        } else {
+            throw new InvalidException("Title not provided");
+        }
         String assignedTo = tokens[2];
-        int timeToComplete = Integer.parseInt(tokens[3]);
+        if (Integer.parseInt(tokens[3]) >= 1) {
+            timeToComplete = Integer.parseInt(tokens[3]);
+        } else {
+            throw new InvalidException("Invalid timeToComplete "+tokens[3]);
+        }
         boolean important = tokens[4].equals("y");
         boolean urgent = tokens[5].equals("y");
-        String status = tokens[6];
+        if (tokens[6] == "todo" || tokens[6] == "done") {
+            status = tokens[6];
+        } else {
+            throw new InvalidException("Invalid status "+tokens[6]);
+        }
         return new Task(
             title, assignedTo, timeToComplete, important, urgent, status);
     }
