@@ -43,7 +43,7 @@ class Todoist {
             if (i != taskscount - 1) {
                 str += "\n";
             }
-        } return str;
+        } return str.substring(0,str.length());
     }
 }
 class Task {
