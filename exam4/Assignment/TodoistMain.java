@@ -154,10 +154,11 @@ public class TodoistMain {
         String title = "";
         int timeToComplete = 0;
         String status= "";
-        if (tokens[1] != "") {
-            title = tokens[1];
-        } else {
+        //System.out.println(tokens[1]);
+        if (tokens[1].equals("")) {
             throw new InvalidException("Title not provided");
+        } else {
+            title = tokens[1];
         }
         String assignedTo = tokens[2];
         if (Integer.parseInt(tokens[3]) >= 1) {
@@ -167,7 +168,7 @@ public class TodoistMain {
         }
         boolean important = tokens[4].equals("y");
         boolean urgent = tokens[5].equals("y");
-        if (tokens[6] == "todo" || tokens[6] == "done") {
+        if (tokens[6].equals("todo") || tokens[6].equals("done")) {
             status = tokens[6];
         } else {
             throw new InvalidException("Invalid status "+tokens[6]);
