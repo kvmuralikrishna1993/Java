@@ -36,7 +36,7 @@ class Todoist {
         String str = "";
         for (int i = 0; i < taskscount; i++) {
             String imp = (taskarray[i].important == true) ? "Important" : "Not Important";
-            String urg = (taskarray[i].important == true) ? "Urgent" : "Not Urgent";
+            String urg = (taskarray[i].urgent == true) ? "Urgent" : "Not Urgent";
             str += taskarray[i].title+", "+taskarray[i].assignedTo+", "+
                 Integer.toString(taskarray[i].timeToComplete)+", "+imp+", "+urg+", "+
                 taskarray[i].status;
