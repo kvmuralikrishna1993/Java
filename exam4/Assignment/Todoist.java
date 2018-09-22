@@ -13,19 +13,36 @@ class InvalidException extends Exception {
         super(s);
     }
 }
-
+/**
+ * Class for todoist.
+ */
 class Todoist { 
     Task[] taskarray;
     final int val = 30;
     int taskscount;
+    /**
+     * Constructs the object.
+     */
     Todoist() {
         taskarray = new Task[val];
         taskscount = 0;
     }
+    /**
+     * Adds a task.
+     *
+     * @param      args  The arguments
+     */
     public void addTask(Task args) {
         taskarray[taskscount] = args;
         taskscount++;
     }
+    /**
+     * Gets the next task.
+     *
+     * @param      args  The arguments
+     *
+     * @return     The next task.
+     */
     public Task getNextTask(String args) {
         for (int i = 0; i < taskscount; i++)
             if (taskarray[i].assignedTo.equals(args)) {
@@ -40,6 +57,14 @@ class Todoist {
             }
         return null;
     }
+    /**
+     * Gets the next task.
+     *
+     * @param      args  The arguments
+     * @param      n     { parameter_description }
+     *
+     * @return     The next task.
+     */
     public Task[] getNextTask(String args, int n) {
         Task[] arr =  new Task[n];
         int count  = 0;
@@ -59,6 +84,11 @@ class Todoist {
             }
         return arr;
     }
+    /**
+     * { totalTime4Completion }
+     *
+     * @return     { description_of_the_return_value }
+     */
     public int totalTime4Completion() {
         int total = 0;
         for (int i = 0; i < taskscount; i++) {
@@ -68,6 +98,11 @@ class Todoist {
         }
         return total;
     }
+    /**
+     * Returns a string representation of the object.
+     *
+     * @return     String representation of the object.
+     */
     public String toString() {
         String str = "";
         for (int i = 0; i < taskscount; i++) {
@@ -82,6 +117,9 @@ class Todoist {
         } return str.substring(0,str.length());
     }
 }
+/**
+ * Class for task.
+ */
 class Task {
     String title;
     String assignedTo;
@@ -89,6 +127,16 @@ class Task {
     boolean important;
     boolean urgent;
     String status;
+    /**
+     * Constructs the object.
+     *
+     * @param      title           The title
+     * @param      assignedTo      The assigned to
+     * @param      timeToComplete  The time to complete
+     * @param      important       The important
+     * @param      urgent          The urgent
+     * @param      status          The status
+     */
     Task(String title, String assignedTo, int timeToComplete, boolean important,
         boolean urgent, String status) {
         this.title = title;
@@ -98,6 +146,11 @@ class Task {
         this.urgent = urgent;
         this.status = status;
     }
+    /**
+     * Returns a string representation of the object.
+     *
+     * @return     String representation of the object.
+     */
     public String toString() {
         String str = "";
         String imp = (this.important == true) ? "Important" : "Not Important";
