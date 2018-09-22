@@ -29,7 +29,8 @@ class Todoist {
     public Task getNextTask(String args) {
         for (int i = 0; i < taskscount; i++)
             if (taskarray[i].assignedTo.equals(args)) {
-                if(taskarray[i].equals("todo")){
+                if(taskarray[i].status.equals("todo")){
+                    //System.out.println("y");
                     if(taskarray[i].important == true) {
                         if(taskarray[i].urgent == false) {
                             return taskarray[i];
