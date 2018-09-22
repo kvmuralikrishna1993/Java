@@ -59,8 +59,14 @@ class Todoist {
             }
         return arr;
     }
-    public String totalTime4Completion() {
-        return "b";
+    public int totalTime4Completion() {
+        int total = 0;
+        for (int i = 0; i < taskscount; i++) {
+            if(taskarray[i].status.equals("todo")){
+                total += taskarray[i].timeToComplete;
+            }
+        }
+        return total;
     }
     public String toString() {
         String str = "";
