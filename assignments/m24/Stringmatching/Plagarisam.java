@@ -46,13 +46,13 @@ class Plagarisam {
 	/**
 	 * { function_frequency }.
 	 */
-	public void distance() {
+	public double[][] distance() {
 		for (int i = 0; i < filecount; i++) {
 			String[] wordlist = fileArray[i].split(" ");
 			dictionary.put(i, wordlist);
 		}
-		int length = 0;
-		long[][] dis = new long[dictionary.size()][dictionary.size()]; 
+		double length = 0;
+		double[][] dis = new double[dictionary.size()][dictionary.size()]; 
 		for(int i = 0; i < filecount; i++) {
 			String s1 = fileArray[i];
 			for(int j = 0; j < dictionary.size(); j++) {
@@ -60,35 +60,38 @@ class Plagarisam {
 				String str = "";
 				for(int k = 0; k < temp.length; k++) {
 					str += temp[k];
+					//System.out.println(str);
 					if (s1.contains(str)){
 						length = str.length();
 					}
 					str += " ";
+					//System.out.println(str);
 				}
 				dis[i][j] = length;
 			}
 		}
 		for(int i = 0; i < filecount; i++) {
-			for(int j = 0; j < filecount; j++){
-				System.out.println(dis[i][i]+" "+fileArray[i].length()+" "+fileArray[j].length());
-				//dis[i][j] = (dis[i][j]/(fileArray[i].length()*fileArray[j].length()))*100.0;
-				System.out.print(dis[i][j]/(fileArray[i].length()*fileArray[j].length())*100.0+" ");
-			}System.out.println();
+			for(int j = 0; j < filecount; j++) {
+				if (fileArray[i].length() == 0 || fileArray[j].length() == 0) {
+					dis[i][j] = 0.0;
+				} else {
+					dis[i][j] = (dis[i][j]*2)/(fileArray[i].length()+fileArray[j].length())*100.0;
+				}
+			}
 		}
+		return dis;
 	}
-	/**
-	 * { function_print}.
 	public void printresult(){
-		long[][] result = distance();
+		double[][] result = distance();
 		String print = "";
 		int file1 = 0;
 		int file2 = 0;
-		long max = result[0][1];
+		double max = result[0][1];
 		System.out.println("            File1.txt	File2.txt	File3.txt	File4.txt	File5.txt");
 		for(int i = 0; i < result.length; i++) {
 			print = filenames[i] + "	";
 			for(int j = 0; j < result.length; j++) {
-				print += result[i][j] + "		";
+				print += Math.round(result[i][j]) + "		";
 				if (result[i][j] < 100) {
 					if (max < result[i][j]) {
 						max = result[i][j];
@@ -100,5 +103,5 @@ class Plagarisam {
 			System.out.println(print);
 		}
 		System.out.println("Maximum similarity is between " + filenames[file1] + " and "+ filenames[file2]);
-	}*/
+	}
 }

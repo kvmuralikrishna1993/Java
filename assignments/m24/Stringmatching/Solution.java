@@ -26,7 +26,7 @@ public final class Solution {
 		try {
 			filename = scan.nextLine();
 		} catch(NoSuchElementException e) {
-			System.out.println("empty directory");
+			System.out.println("Empty Directory");
 			return;
 		}
 		path += filename; //creating a path from folder name
