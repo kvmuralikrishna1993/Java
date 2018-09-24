@@ -20,7 +20,7 @@ public final class Solution {
 	public static void main(String[] args) {
 		Plagarisam p = new Plagarisam();
 		String path =
-		"/Users/Muralikrishna/Desktop/m23/Assignment/";
+		"/Users/Muralikrishna/Desktop/java/assignments/m23/Assignment/";
 		String filename = "";
 		Scanner scan = new Scanner(System.in);
 		try {
