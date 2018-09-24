@@ -72,10 +72,10 @@ class Plagarisam {
 		}
 		for(int i = 0; i < filecount; i++) {
 			for(int j = 0; j < filecount; j++) {
-				if (fileArray[i].length() == 0 || fileArray[j].length() == 0) {
-					dis[i][j] = 0.0;
-				} else {
+				try {
 					dis[i][j] = (dis[i][j]*2)/(fileArray[i].length()+fileArray[j].length())*100.0;
+				} catch(ArithmeticException ae) {
+					dis[i][j] = 0.0;
 				}
 			}
 		}
