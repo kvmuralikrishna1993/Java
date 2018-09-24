@@ -91,7 +91,7 @@ class Plagarisam {
 		for(int i = 0; i < result.length; i++) {
 			print = filenames[i] + "	";
 			for(int j = 0; j < result.length; j++) {
-				print += Math.round(result[i][j]*1.0) + "		";
+				print += Math.round(result[i][j])*1.0 + "		";
 				if (result[i][j] < 100) {
 					if (max < result[i][j]) {
 						max = result[i][j];
