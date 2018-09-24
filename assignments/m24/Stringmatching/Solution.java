@@ -20,7 +20,7 @@ public final class Solution {
 	public static void main(String[] args) {
 		Plagarisam p = new Plagarisam();
 		String path =
-		"/Users/Muralikrishna/Desktop/m24/Stringmatching/";
+		"/Users/Muralikrishna/Desktop/java/assignments/m24/Stringmatching/";
 		String filename = "";
 		Scanner scan = new Scanner(System.in);
 		try {
