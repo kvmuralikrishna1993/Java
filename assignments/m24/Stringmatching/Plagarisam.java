@@ -70,8 +70,9 @@ class Plagarisam {
 		}
 		for(int i = 0; i < filecount; i++) {
 			for(int j = 0; j < filecount; j++){
-				dis[i][j] = Math.round((dis[i][j]/(fileArray[i].length()*fileArray[j].length()))*100.0);
-				System.out.print(dis[i][j]+" ");
+				System.out.println(dis[i][i]+" "+fileArray[i].length()+" "+fileArray[j].length());
+				//dis[i][j] = (dis[i][j]/(fileArray[i].length()*fileArray[j].length()))*100.0;
+				System.out.print(dis[i][j]/(fileArray[i].length()*fileArray[j].length())*100.0+" ");
 			}System.out.println();
 		}
 	}
