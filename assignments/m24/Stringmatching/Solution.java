@@ -52,6 +52,6 @@ public final class Solution {
 			}
 		}
 		p.cleanfile();
-		p.distance();
+		p.printresult();
 	}
 }
