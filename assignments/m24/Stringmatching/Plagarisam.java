@@ -76,6 +76,9 @@ class Plagarisam {
 					dis[i][j] = (dis[i][j]*2)/(fileArray[i].length()+fileArray[j].length())*100.0;
 				} catch(ArithmeticException ae) {
 					dis[i][j] = 0.0;
+					if(i == j) {
+						dis[i][j] = 100.0;
+					}
 				}
 			}
 		}
