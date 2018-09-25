@@ -45,8 +45,8 @@ class Plagarisam {
 	 */
 	public void cleanfile() {
 		for (int i = 0; i < filecount; i++) {
-			fileArray[i] = fileArray[i].replaceAll("[^a-zA-Z0-9 ]", "").trim();
-			//fileArray[i] = fileArray[i].replaceAll("[\n\\(]", " ");
+			fileArray[i] = fileArray[i].replaceAll("[^a-zA-Z0-9. ]", "").trim();
+			fileArray[i] = fileArray[i].replaceAll("[.]", " ");
 			//fileArray[i] = fileArray[i].trim().replaceAll(" +", " ");
 			fileArray[i] = fileArray[i].toLowerCase();
 		}
@@ -81,12 +81,13 @@ class Plagarisam {
 		for(int i = 0; i < filecount; i++) {
 			for(int j = 0; j < filecount; j++) {
 				try {
-					dis[i][j] = (dis[i][j]*2)/(fileArray[i].length()+fileArray[j].length())*100.0;
-				} catch(ArithmeticException ae) {
-					dis[i][j] = 0.0;
 					if(i == j) {
 						dis[i][j] = 100.0;
+					} else {
+						dis[i][j] = Math.round(dis[i][j]*2/(fileArray[i].length()+fileArray[j].length()))*100.0;
 					}
+				} catch(ArithmeticException ae) {
+					dis[i][j] = 0.0;
 				}
 			}
 		}
@@ -109,7 +110,7 @@ class Plagarisam {
 		for(int i = 0; i < result.length; i++) {
 			print = filenames[i] + "	";
 			for(int j = 0; j < result.length; j++) {
-				print += Math.round(result[i][j])*1.0 + "		";
+				print += result[i][j]+ "		";
 				if (result[i][j] < 100) {
 					if (max < result[i][j]) {
 						max = result[i][j];
