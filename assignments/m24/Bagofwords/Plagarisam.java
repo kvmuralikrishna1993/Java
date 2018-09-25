@@ -135,7 +135,13 @@ class Plagarisam {
 		int file1 = 0;
 		int file2 = 0;
 		long max = result[0][1];
-		System.out.println("            File1.txt	File2.txt	File3.txt	File4.txt	File5.txt");
+		System.out.print("      " + "\t\t");
+        for (int k = 1; k <= result.length; k++) {
+            System.out.print("File");
+            System.out.print(k);
+            System.out.print(".txt");
+            System.out.print("\t");
+        }
 		for(int i = 0; i < result.length; i++) {
 			print = filenames[i] + "	";
 			for(int j = 0; j < result.length; j++) {
