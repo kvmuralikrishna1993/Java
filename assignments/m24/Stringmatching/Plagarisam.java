@@ -72,7 +72,9 @@ class Plagarisam {
 					if (s1.contains(str)){
 						length = str.length();
 					}
-					str += " ";
+					if (k != temp.length - 1) {
+						str += " ";
+					}
 					//System.out.println(str);
 				}
 				dis[i][j] = length;
