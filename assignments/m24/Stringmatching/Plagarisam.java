@@ -84,7 +84,7 @@ class Plagarisam {
 					if(i == j) {
 						dis[i][j] = 100.0;
 					} else {
-						dis[i][j] = Math.round(dis[i][j]*2/(fileArray[i].length()+fileArray[j].length()))*100.0;
+						dis[i][j] = Math.round(dis[i][j]*2/(fileArray[i].length()+fileArray[j].length())*100.0);
 					}
 				} catch(ArithmeticException ae) {
 					dis[i][j] = 0.0;
