@@ -142,8 +142,10 @@ class Plagarisam {
             System.out.print(".txt");
             System.out.print("\t");
         }
+        System.out.println();
 		for(int i = 0; i < result.length; i++) {
 			print = filenames[i] + "	";
+			//System.out.println(print);
 			for(int j = 0; j < result.length; j++) {
 				print += result[i][j] + "		";
 				if (result[i][j] < 100) {
