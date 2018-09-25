@@ -9,11 +9,11 @@ import java.io.IOException;
 /**
  * Class for solution.
  */
-public class Solution {
+public final class Solution {
     /**
      * Constructs the object.
      */
-    Solution() {
+    private Solution() {
 
     }
     /**
@@ -51,7 +51,7 @@ public class Solution {
                             line = br.readLine(); //reading line untill null
                         }
                     String fileAsString = sb.toString(); //convert to string
-                    p.addfile(fileAsString, file.getName()); 
+                    p.addfile(fileAsString, file.getName());
                     // storing files in string array
                 }
             } catch (IOException e) {
