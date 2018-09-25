@@ -1,8 +1,16 @@
-import java.io.*;
-import java.util.regex.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.lang.Math;
-import java.lang.*;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Iterator;
 /**
  * Class for plagarisam.
  */
@@ -37,9 +45,9 @@ class Plagarisam {
 	 */
 	public void cleanfile() {
 		for (int i = 0; i < filecount; i++) {
-			fileArray[i] = fileArray[i].replaceAll("[^-a-zA-Z0-9 \n\\(]", "");
-			fileArray[i] = fileArray[i].replaceAll("[\n\\(]", " ");
-			fileArray[i] = fileArray[i].trim().replaceAll(" +", " ");
+			fileArray[i] = fileArray[i].replaceAll("[^a-zA-Z0-9 ]", "").trim();
+			//fileArray[i] = fileArray[i].replaceAll("[\n\\(]", " ");
+			//fileArray[i] = fileArray[i].trim().replaceAll(" +", " ");
 			fileArray[i] = fileArray[i].toLowerCase();
 		}
 	}
@@ -90,7 +98,14 @@ class Plagarisam {
 		int file1 = 0;
 		int file2 = 0;
 		double max = result[0][1];
-		System.out.println("            File1.txt	File2.txt	File3.txt	File4.txt	File5.txt");
+		System.out.print("      " + "\t\t");
+        for (int k = 1; k <= result.length; k++) {
+            System.out.print("File");
+            System.out.print(k);
+            System.out.print(".txt");
+            System.out.print("\t");
+        }
+        System.out.println();
 		for(int i = 0; i < result.length; i++) {
 			print = filenames[i] + "	";
 			for(int j = 0; j < result.length; j++) {
