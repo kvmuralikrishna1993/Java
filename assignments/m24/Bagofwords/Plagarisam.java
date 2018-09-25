@@ -121,7 +121,7 @@ class Plagarisam {
 		long[][] result = new long[vector.length][vector.length];
 		for (int i = 0; i < dot.length; i++) {
 			for(int j = 0; j < vector.length; j++) {
-				result[i][j] = Math.round(dot[i][j]/ Math.sqrt(vector[i]*vector[j]) * 100);
+				result[i][j] = Math.round(dot[i][j]/ Math.sqrt(vector[i]*vector[j]))* 100;
 			}
 		}
 		return result;
