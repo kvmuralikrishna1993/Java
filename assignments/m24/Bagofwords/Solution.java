@@ -1,7 +1,12 @@
-import java.io.*;
-import java.util.regex.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.lang.StringBuilder;
+import java.util.Scanner;
+import java.util.Arrays;
 import java.lang.Math;
+import java.util.NoSuchElementException;
+import java.io.IOException;
 /**
  * Class for solution.
  */
