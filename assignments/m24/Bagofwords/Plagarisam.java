@@ -121,7 +121,7 @@ class Plagarisam {
 		long[][] result = new long[vector.length][vector.length];
 		for (int i = 0; i < dot.length; i++) {
 			for(int j = 0; j < vector.length; j++) {
-				result[i][j] = Math.round((dot[i][j]/ Math.sqrt(vector[i])*Math.sqrt(vector[j]))* 100);
+				result[i][j] = Math.round(dot[i][j]/ Math.sqrt(vector[i]*vector[j]) * 100.0);
 			}
 		}
 		return result;
@@ -147,6 +147,9 @@ class Plagarisam {
 			print = filenames[i] + "	";
 			//System.out.println(print);
 			for(int j = 0; j < result.length; j++) {
+				if (result[i][j] < 50) {
+					result[i][j] = 0;
+				}
 				print += result[i][j] + "		";
 				if (result[i][j] < 100) {
 					if (max < result[i][j]) {
