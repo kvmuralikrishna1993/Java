@@ -36,10 +36,10 @@ class Plagarisam {
 	 */
 	public void cleanfile() {
 		for (int i = 0; i < filecount; i++) {
-			fileArray[i] = fileArray[i].replaceAll("[^a-z0-9 ]", "").toLowerCase().trim();
+			fileArray[i] = fileArray[i].replaceAll("[^a-z0-9 ]", "");
 			//fileArray[i] = fileArray[i].replaceAll("[\n\\(]", " ");
 			//fileArray[i] = fileArray[i].trim().replaceAll(" +", " ");
-			//fileArray[i] = fileArray[i].toLowerCase().trim();
+			fileArray[i] = fileArray[i].toLowerCase().trim();
 		}
 	}
 	/**
