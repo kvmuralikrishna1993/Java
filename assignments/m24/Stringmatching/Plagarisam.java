@@ -45,8 +45,8 @@ class Plagarisam {
 	 */
 	public void cleanfile() {
 		for (int i = 0; i < filecount; i++) {
-			fileArray[i] = fileArray[i].replaceAll("[^a-zA-Z0-9. ]", "").trim();
-			fileArray[i] = fileArray[i].replaceAll("[.]", " ");
+			fileArray[i] = fileArray[i].replaceAll("[^a-zA-Z0-9 ]", "").trim();
+			//fileArray[i] = fileArray[i].replaceAll("[.]", " ");
 			//fileArray[i] = fileArray[i].trim().replaceAll(" +", " ");
 			fileArray[i] = fileArray[i].toLowerCase();
 		}
@@ -72,9 +72,7 @@ class Plagarisam {
 					if (s1.contains(str)){
 						length = str.length();
 					}
-					if (k != temp.length - 1) {
 						str += " ";
-					}
 					//System.out.println(str);
 				}
 				dis[i][j] = length;
