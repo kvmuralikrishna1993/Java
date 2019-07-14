@@ -1,3 +1,5 @@
+## Steps to create a phishing site.
+
 create index.html and fish.php
 
 index.html is created using source code of website(facebook.com)
